@@ -1,0 +1,12 @@
+{
+  "theme": "system",
+  "accentColor": "#eb9705",
+  "cssTheme": "Atom",
+  "enabledCssSnippets": [
+    "icons_obsidian"
+  ],
+  "nativeMenus": true,
+  "baseFontSize": 18,
+  "monospaceFontFamily": "Times New Roman",
+  "interfaceFontFamily": "Cambria Math"
+}

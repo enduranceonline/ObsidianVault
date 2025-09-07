@@ -1,0 +1,148 @@
+/* === CUSTOM CHECKBOX ICONS FOR OBSIDIAN === */
+
+.cm-formatting-task.cm-formatting-task {
+    display: none;
+  }
+  
+  input.task-list-item-checkbox {
+    margin-right: 0.5em;
+  }
+  
+  /* BASE STYLES */
+  ul > li.task-list-item.is-checked {
+    text-decoration: line-through;
+    opacity: 0.7;
+  }
+  
+  /* Checkbox: [ ] TO-DO */
+  ul > li.task-list-item[data-task=" "]::before {
+    content: "⬜";
+    margin-right: 0.4em;
+  }
+  
+  /* Checkbox: [/] Incomplete */
+  ul > li.task-list-item[data-task="/"]::before {
+    content: "🔄";
+    margin-right: 0.4em;
+  }
+  
+  /* Checkbox: [x] Done */
+  ul > li.task-list-item[data-task="x"]::before {
+    content: "✅";
+    margin-right: 0.4em;
+  }
+  
+  /* Checkbox: [-] Canceled */
+  ul > li.task-list-item[data-task="-"]::before {
+    content: "❌";
+    margin-right: 0.4em;
+  }
+  
+  /* Checkbox: [>] Forwarded */
+  ul > li.task-list-item[data-task=">"]::before {
+    content: "📤";
+    margin-right: 0.4em;
+  }
+  
+  /* Checkbox: [<] Scheduling */
+  ul > li.task-list-item[data-task="<"]::before {
+    content: "📅";
+    margin-right: 0.4em;
+  }
+  
+  /* Checkbox: [?] Question */
+  ul > li.task-list-item[data-task="?"]::before {
+    content: "❓";
+    margin-right: 0.4em;
+  }
+  
+  /* Checkbox: [!] Important */
+  ul > li.task-list-item[data-task="!"]::before {
+    content: "⚠️";
+    margin-right: 0.4em;
+  }
+  
+  /* Checkbox: [*] Star */
+  ul > li.task-list-item[data-task="*"]::before {
+    content: "⭐";
+    margin-right: 0.4em;
+  }
+  
+  /* Checkbox: ["] Quote */
+  ul > li.task-list-item[data-task="\""]::before {
+    content: "💬";
+    margin-right: 0.4em;
+  }
+  
+  /* Checkbox: [l] Location */
+  ul > li.task-list-item[data-task="l"]::before {
+    content: "📍";
+    margin-right: 0.4em;
+  }
+  
+  /* Checkbox: [b] Bookmark */
+  ul > li.task-list-item[data-task="b"]::before {
+    content: "🔖";
+    margin-right: 0.4em;
+  }
+  
+  /* Checkbox: [i] Information */
+  ul > li.task-list-item[data-task="i"]::before {
+    content: "ℹ️";
+    margin-right: 0.4em;
+  }
+  
+  /* Checkbox: [S] Savings */
+  ul > li.task-list-item[data-task="S"]::before {
+    content: "💰";
+    margin-right: 0.4em;
+  }
+  
+  /* Checkbox: [I] Idea */
+  ul > li.task-list-item[data-task="I"]::before {
+    content: "💡";
+    margin-right: 0.4em;
+  }
+  
+  /* Checkbox: [p] Pros */
+  ul > li.task-list-item[data-task="p"]::before {
+    content: "👍";
+    margin-right: 0.4em;
+  }
+  
+  /* Checkbox: [c] Cons */
+  ul > li.task-list-item[data-task="c"]::before {
+    content: "👎";
+    margin-right: 0.4em;
+  }
+  
+  /* Checkbox: [f] Fire */
+  ul > li.task-list-item[data-task="f"]::before {
+    content: "🔥";
+    margin-right: 0.4em;
+  }
+  
+  /* Checkbox: [k] Key */
+  ul > li.task-list-item[data-task="k"]::before {
+    content: "🔑";
+    margin-right: 0.4em;
+  }
+  
+  /* Checkbox: [w] Win */
+  ul > li.task-list-item[data-task="w"]::before {
+    content: "🏆";
+    margin-right: 0.4em;
+  }
+  
+  /* Checkbox: [u] Up */
+  ul > li.task-list-item[data-task="u"]::before {
+    content: "⬆️";
+    margin-right: 0.4em;
+  }
+  
+  /* Checkbox: [d] Down */
+  ul > li.task-list-item[data-task="d"]::before {
+    content: "⬇️";
+    margin-right: 0.4em;
+  }
+  

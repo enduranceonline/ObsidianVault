@@ -1,0 +1,246 @@
+{
+  "main": {
+    "id": "a64189947d1d1ef9",
+    "type": "split",
+    "children": [
+      {
+        "id": "a60373e18027bc5e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6d9e7dee764d85ad",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Ciberseguridad/Certificaciones/eJPT/📘 Apuntes eJPTv2 - 2. Recolección de información.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "📘 Apuntes eJPTv2 - 2. Recolección de información"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "386ea74b0a3488e3",
+    "type": "split",
+    "children": [
+      {
+        "id": "1e7a8ad06c857bd7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3bf5bf97cda54a8c",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Explorador de archivos"
+            }
+          },
+          {
+            "id": "99a2b573e46287ea",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#proyecto",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Buscar"
+            }
+          },
+          {
+            "id": "43da82bce6b69677",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Marcadores"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 416.5
+  },
+  "right": {
+    "id": "8e905b832a59e5a0",
+    "type": "split",
+    "children": [
+      {
+        "id": "f5092ccd291e6116",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b2f79a070876be47",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Proyectos/Portafolio Web/Plan del proyecto — Portafolio (Pentester).md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Enlaces entrantes de Plan del proyecto — Portafolio (Pentester)"
+            }
+          },
+          {
+            "id": "cb5d32aa032c2a75",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Proyectos/Portafolio Web/Plan del proyecto — Portafolio (Pentester).md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": false
+              },
+              "icon": "links-going-out",
+              "title": "Enlaces salientes de Plan del proyecto — Portafolio (Pentester)"
+            }
+          },
+          {
+            "id": "103058f0b679ad72",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Etiquetas"
+            }
+          },
+          {
+            "id": "3f2958a286a46a22",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Ciberseguridad/Certificaciones/eJPT/📘 Apuntes eJPTv2 - 2. Recolección de información.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Esquema de 📘 Apuntes eJPTv2 - 2. Recolección de información"
+            }
+          },
+          {
+            "id": "7293782c75d7599b",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {},
+              "icon": "calendar-with-checkmark",
+              "title": "Calendar"
+            }
+          },
+          {
+            "id": "3d863755a3bb9529",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 237.5
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "bases:Crear nueva base": false,
+      "switcher:Abrir selector rápido": false,
+      "graph:Abrir vista gráfica": false,
+      "canvas:Crear nuevo lienzo": false,
+      "daily-notes:Abrir la nota de hoy": false,
+      "templates:Insertar plantilla": false,
+      "command-palette:Abrir paleta de comandos": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "obsidian-excalidraw-plugin:Nuevo Bosquejo": false,
+      "obsidian-git:Open Git source control": false
+    }
+  },
+  "active": "6d9e7dee764d85ad",
+  "lastOpenFiles": [
+    "Ciberseguridad/Certificaciones/eJPT/Anexos/Pasted image 20250907155921.png",
+    "Ciberseguridad/Certificaciones/eJPT/Anexos/Pasted image 20250907150853.png",
+    "Ciberseguridad/Bases_Ciberseguridad/Sistemas Operativos/Kali linux/Kali_Linux_Introduccion.md",
+    "Ciberseguridad/Certificaciones/eJPT/📘 Apuntes eJPTv2 - 2. Recolección de información.md",
+    "Ciberseguridad/Certificaciones/eJPT/📘 Apuntes eJPTv2 - 5. Pivoting.md",
+    "Ciberseguridad/Certificaciones/eJPT/📘 Apuntes eJPTv2 - 4. Enumeración interna.md",
+    "Ciberseguridad/Certificaciones/eJPT/📘 Apuntes eJPTv2 - 3. Explotación (Acceso a la maquina).md",
+    "Ciberseguridad/Certificaciones/eJPT/📘 Apuntes eJPTv2 - 1. Índice.md",
+    "Ciberseguridad/Certificaciones/eJPT/Anexos/Pasted image 20250907104756.png",
+    "Ciberseguridad/Certificaciones/eJPT/Anexos",
+    "Ciberseguridad/Certificaciones/eJPT/Esquema_Teoria.md",
+    "Sin título.canvas",
+    "Ciberseguridad/Certificaciones/eJPT",
+    "Excalidraw/Templates/Excalidraw-Nuevo.md/Drawing 2025-09-06 20.33.47.excalidraw.md",
+    "Excalidraw/Templates/Excalidraw-Nuevo.md/Drawing 2025-09-06 20.32.12.excalidraw.md",
+    "Excalidraw/Templates/Excalidraw-Nuevo.md/Drawing 2025-09-06 20.31.48.excalidraw.md",
+    "Excalidraw/Templates/Excalidraw-Nuevo.md/Drawing 2025-09-06 20.31.11.excalidraw.md",
+    "Excalidraw/Templates/Excalidraw-Nuevo.md/Drawing 2025-09-06 20.42.33.excalidraw.md",
+    "Excalidraw/Scripts/Downloaded/Text to Sticky Notes.md",
+    "Ciberseguridad/Certificaciones/ComTIA/network+/Apuntes_Udemy/Chapter_1_Network Models/Capitulo1_Network Models.md",
+    "Excalidraw/Scripts/Downloaded/Text to Sticky Notes.svg",
+    "Excalidraw/Scripts/Downloaded/Set Grid.md",
+    "Excalidraw/Scripts/Downloaded/Set Dimensions.md",
+    "Excalidraw/Scripts/Downloaded/Select Similar Elements.md",
+    "Excalidraw/Scripts/Downloaded/Select Elements of Type.md",
+    "Excalidraw/Scripts/Downloaded/Repeat Elements.md",
+    "Excalidraw/Scripts/Downloaded/Rename Image.md",
+    "Excalidraw/Scripts/Downloaded/Printable Layout Wizard.md",
+    "Excalidraw/Scripts/Downloaded/Palette loader.md",
+    "Excalidraw/Scripts/Downloaded/Normalize Selected Arrows.md",
+    "Excalidraw/Scripts/Downloaded/Mindmap format.md",
+    "Excalidraw/Scripts/Downloaded/Mindmap connector.md",
+    "Excalidraw/Scripts/Downloaded/Image Occlusion.svg",
+    "Ciberseguridad/Maquinas/tryhackme",
+    "Ciberseguridad/Maquinas",
+    "Sin título.base",
+    "Excalidraw/Scripts/Downloaded/Deconstruct selected elements into new drawing.svg",
+    "Excalidraw/Scripts/Downloaded/Create new markdown file and embed into active drawing.svg",
+    "Ciberseguridad/Certificaciones/ComTIA/network+/Apuntes_Udemy/Chapter_5/Chapter+05+Slide+Handout.pdf",
+    "Proyectos/Portafolio Web",
+    "DAM/Cisco Networking Academy/Fundamentos de Python 1",
+    "Excalidraw/Scripts/Downloaded/Repeat Elements.svg",
+    "Excalidraw/Scripts/Downloaded/Grid Selected Images.svg",
+    "Excalidraw/Scripts/Downloaded/Rename Image.svg",
+    "Excalidraw/Scripts/Downloaded/Excalidraw Writing Machine.svg",
+    "Excalidraw/Scripts/Downloaded",
+    "Excalidraw/Scripts",
+    "DAM/Cisco Networking Academy/English  for IT 1/Sin título.canvas"
+  ]
+}
