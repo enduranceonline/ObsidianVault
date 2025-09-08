@@ -1,0 +1,20 @@
+# =========================
+# .gitignore para Obsidian
+# =========================
+
+# Archivos de Obsidian que son personales o temporales
+.obsidian/workspace.json
+.obsidian/appearance.json
+.obsidian/cache
+.obsidian/graph.json
+.trash/
+
+# Plugins (archivos pesados o de compilación)
+.obsidian/plugins/**/node_modules/
+.obsidian/plugins/**/dist/
+.obsidian/plugins/**/main.js.map
+
+# Archivos de sistema operativo (innecesarios en el repo)
+.DS_Store
+Thumbs.db
+Desktop.ini
