@@ -157,7 +157,8 @@ La creación de redes modernas es extremadamente compleja, pero esa complejidad 
 #### 🔌 Red Local Básica
 - **NIC (Network Interface Card):** Tarjeta que conecta un equipo a la red.
 - **Hub:** Dispositivo que conecta varios ordenadores para que compartan recursos.
-- **Recursos compartidos:** Archivos, juegos, servicios, etc., accesibles entre dispositivos de la red local.
+- **Recursos compartidos:** Archivos, juegos, servicios, etc., accesibles entre dispositivos de la red local.  
+  ![[Pasted image 20250910102537.png]]
 
 #### 🧱 ¿Cómo se mueven los datos?
 - Los datos **no** se transmiten como un flujo continuo.
@@ -402,15 +403,15 @@ Imagina un edificio:
 
 ### 🔐 Puertos y protocolos comunes para el examen
 
-| Servicio         | Protocolo | Puerto(s) |
-|------------------|-----------|-----------|
-| FTP (datos)      | TCP       | 20        |
-| FTP (control)    | TCP       | 21        |
-| SSH              | TCP       | 22        |
-| Telnet           | TCP       | 23        |
-| DNS              | TCP/UDP   | 53        |
-| HTTP             | TCP       | 80        |
-| HTTPS            | TCP       | 443       |
+| Servicio      | Protocolo | Puerto(s) |
+| ------------- | --------- | --------- |
+| FTP (datos)   | TCP       | 20        |
+| FTP (control) | TCP       | 21        |
+| SSH           | TCP       | 22        |
+| Telnet        | TCP       | 23        |
+| DNS           | TCP/UDP   | 53        |
+| HTTP          | TCP       | 80        |
+| HTTPS         | TCP       | 443       |
 
 - ⚠️ Estos puertos son **muy preguntados** en el examen CompTIA Network+.
 - Otros puertos también pueden aparecer, así que **no memorices solo estos**.
@@ -561,9 +562,9 @@ Los routers operan en la **Capa 3 (Red)** del modelo OSI. Se encargan del direcc
 **¿Cuántos bytes puede contener una trama Ethernet?**
 
 - [x] Aproximadamente 1500 bytes  
-- [ ] 512 bytes  
-- [ ] 2048 bytes  
-- [ ] 65535 bytes  
+- [ ] 512 bytes
+- [ ] 2048 bytes
+- [ ] 65535 bytes
 
 **Explicación:**  
 Una trama Ethernet estándar puede contener hasta **1514 bytes**, de los cuales **1500** corresponden al campo de datos, lo que da lugar a esta aproximación habitual.
@@ -573,8 +574,8 @@ Una trama Ethernet estándar puede contener hasta **1514 bytes**, de los cuales 
 ### ✅ Pregunta 3
 **¿Cuál de las siguientes es una dirección MAC válida?**
 
-- [ ] GG:00:45:ZC:00:4F  
-- [x] 0A:24:D3:00:00:FF  
+- [ ] GG:00:45:ZC:00:4F
+- [x] 0A:24:D3:00:00:FF ✅ 2025-09-10
 - [ ] Z0:4F:9H:6F:22:00  
 - [ ] 99:00:FF:FF:FH:11  
 

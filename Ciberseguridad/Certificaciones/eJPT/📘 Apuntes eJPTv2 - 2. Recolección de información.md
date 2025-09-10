@@ -1,6 +1,6 @@
 #apuntes #certificacion #eJPT #nmap #linux 
 
-# nmap
+# 📌 nmap
 
 **Network Mapper**
 Esta herramienta nos permite conocer mejor la red con la que estamos trabajando. Viene instalada por defecto en kali y Parrot. Podemos ver los puertos abiertos y cerrados.
@@ -18,17 +18,17 @@ Herramienta que permite conocer mejor la red con la que estamos trabajando. Vien
 Realiza diferentes tipos de escaneo (ping, TCP, UDP, SYN, etc.) para mapear el estado de los puertos.  
 ### 1.3 Objetivo
 
-#### - **Network exploration:** explorar y mapear la red.
+🔹 **Network exploration:** explorar y mapear la red.
 
-#### - **Security auditing:** auditar sistemas, detectar vulnerabilidades y comprobar configuraciones de seguridad.  
+#### 🔹 **Security auditing:** auditar sistemas, detectar vulnerabilidades y comprobar configuraciones de seguridad.  
 
 ### 1.4 Descubrir
 
-#### - **Dispositivos disponibles en la red** (hosts activos).  
+#### 🔹 **Dispositivos disponibles en la red** (hosts activos).  
 
-#### - **Servicios y versiones** que se están ejecutando en cada puerto.  
+#### 🔹 **Servicios y versiones** que se están ejecutando en cada puerto.  
 
-#### - **Sistema operativo** y características de la máquina objetivo.  
+#### 🔹 **Sistema operativo** y características de la máquina objetivo.  
 
 ### 1.5 Usada por profesionales de seguridad y por sysadmin
 
@@ -57,7 +57,7 @@ OBSERVACION:
     - Siempre usa la dirección IP `127.0.0.1`.
     - Sirve para que un sistema pueda comunicarse **consigo mismo**, muy útil para pruebas de red y aplicaciones locales.
     - Ejemplo: cuando accedes a `http://127.0.0.1:8080`, estás entrando a un servicio que corre en tu propio equipo.
-#### Interfaz `eth0` (Ethernet)
+#### 🔹Interfaz `eth0` (Ethernet)
 | Campo | Descripción |
 |-------|-------------|
 | flags=4163<UP,BROADCAST,RUNNING,MULTICAST> | Estado de la interfaz: UP (activa), BROADCAST (permite broadcast), RUNNING (funcionando), MULTICAST (acepta multicast). |
@@ -71,7 +71,7 @@ OBSERVACION:
 | RX packets / bytes | Paquetes y bytes **recibidos** (≈2.3 GiB). |
 | TX packets / bytes | Paquetes y bytes **enviados** (≈610 MiB). |
 | RX/TX errors, dropped, overruns, collisions | Estadísticas de errores → todo en 0 (sin problemas de red). |
-#### Interfaz `lo` (Loopback)
+#### 🔹Interfaz `lo` (Loopback)
 | Campo | Descripción |
 |-------|-------------|
 | flags=73<UP,LOOPBACK,RUNNING> | Estado: activa, loopback (interfaz interna). |
@@ -80,41 +80,41 @@ OBSERVACION:
 | netmask 255.0.0.0 | Máscara de subred estándar para loopback. |
 | RX/TX packets / bytes | Paquetes transmitidos y recibidos localmente. |
 | RX/TX errors... | Estadísticas de errores (normalmente 0). |
-## 2.2 1️⃣ **Tipos de escaneo (método de descubrimiento de puertos)**
+## 2.2 **Tipos de escaneo (método de descubrimiento de puertos)**
 
 Estos definen **cómo Nmap interactúa con el puerto** para determinar si está abierto, cerrado o filtrado.
 
 📌 **Ejemplo práctico:**
 
 `nmap -sS -p- [IP]   # Escaneo SYN de todos los puertos`
-### 👉 **-sS: TCP SYN Scan (por defecto)**  
+### 🔹👉 **-sS: TCP SYN Scan (por defecto)**  
   Escaneo rápido y sigiloso que envía un paquete SYN. Si recibe SYN/ACK → puerto abierto, si recibe RST → puerto cerrado. No completa la conexión (half-open scan). 
 
-### **-sT: TCP Connect() Scan**  
+### **🔹 sT: TCP Connect() Scan**  
   Completa la conexión TCP con el sistema objetivo. Menos sigiloso porque queda registrado en logs, pero no requiere privilegios de root.  
 
-### **-sA: ACK Scan**  
+### **🔹 sA: ACK Scan**  
   Envía paquetes ACK para mapear reglas de firewall y distinguir si un puerto está filtrado o no. No determina si un puerto está abierto o cerrado.  
 
-### **-sW: Window Scan**  
+### 🔹 sW: Window Scan**  
   Variante del ACK Scan que analiza el tamaño de la ventana TCP en la respuesta para inferir el estado del puerto.  
 
-### **-sM: Maimon Scan**  
+### 🔹sM: Maimon Scan**  
   Escaneo menos común que explota un comportamiento descrito por Uriel Maimon en ciertos sistemas TCP.  
 
-### **-sU: UDP Scan**  
+### 🔹sU: UDP Scan**  
   Escanea puertos UDP. Más lento que TCP porque muchos servicios no responden fácilmente, requiriendo retransmisiones.  
 
-### **-sN: Null Scan**  
+### 🔹sN: Null Scan**  
   Envía paquetes TCP sin flags. Un puerto abierto no debería responder; uno cerrado suele devolver un RST.  
 
-### **-sF: FIN Scan**  
+### 🔹sF: FIN Scan**  
   Envía un paquete con el flag FIN. Los puertos cerrados responden con RST, los abiertos no responden.  
 
-### **-sX: Xmas Scan**  
+### 🔹sX: Xmas Scan**  
   Envía un paquete con los flags FIN, PSH y URG encendidos (como un "árbol de navidad"). Similar al Null y FIN Scan para detectar puertos abiertos/cerrados.  
 
-## 2.3  2️⃣ **Opciones/comandos adicionales (parámetros que complementan el escaneo)**
+## 2.3 **Opciones/comandos adicionales (parámetros que complementan el escaneo)**
 
 Estos no cambian la forma en que Nmap envía los paquetes, sino que **añaden funciones**
 
@@ -366,7 +366,7 @@ nmap -p139,445 --script=*smb* [IP]
 ---
 ## 2.5 Scripts
 
-### 📌 Nmap Scripting Engine (NSE)
+###  Nmap Scripting Engine (NSE)
 
 #### 🔹 ¿Qué es?
 El **Nmap Scripting Engine (NSE)** permite ampliar las funcionalidades de Nmap mediante **scripts en Lua**.  
@@ -415,7 +415,7 @@ Algunos grupos comunes de scripts:
 
 ![[Pasted image 20250907184035.png]]
 
-#### 📌 Categorías de Scripts NSE (Nmap Scripting Engine)
+####  Categorías de Scripts NSE (Nmap Scripting Engine)
 
 > ⚠️ En el eJPT no es necesario aprender cada uno en detalle, pero sí entender para qué sirven en general.
 
@@ -480,8 +480,6 @@ nmap -p80,443 --script=vuln [IP]
 
 ## 📝 Ejercicio práctico
 
-## Escenario
-
 Estás en un laboratorio de Pentesting.  
 Tienes una máquina víctima con IP `192.168.1.35`.
 
@@ -515,3 +513,158 @@ Tienes una máquina víctima con IP `192.168.1.35`.
             
 
 👉 **Conclusión:** gracias a Nmap ves cómo un servidor utiliza su interfaz de red para exponer servicios a través de diferentes puertos.
+
+---
+
+#  FTP (File Transfer Protocol)
+
+## 🔹 Definición
+- Protocolo para **transferir archivos** entre equipos conectados a una red.  
+- **Puerto por defecto:** `21/tcp`  
+- Intercambio de ficheros **sin cifrado** → inseguro.  
+- Versiones seguras:
+  - **SFTP** (Secure FTP sobre SSH)  
+  - **SCP** (Secure Copy)  
+
+---
+
+## 🔎 Enumeración FTP
+
+### 1. Obtener la cabecera con Netcat
+
+```
+nc -vn [IP] 21
+```
+
+- Permite ver el **banner** del servicio (versión, software).
+    
+- Ejemplo: `220 (vsFTPd 2.3.4)`
+    
+
+---
+
+### 2. Escaneo con Nmap
+
+```bash
+nmap -p21 -sC [IP] 
+nmap -p21 --script=*ftp* [IP]
+nmap -p21 -sV [IP]
+```
+
+- `-sC` → Scripts NSE por defecto (detecta login anónimo, info del servidor).
+    
+- `--script=*ftp*` → Ejecuta todos los scripts relacionados con FTP.
+    
+- `-sV` → Detección de versión del servicio.
+    
+
+📌 Ejemplo de resultado:
+
+```
+21/tcp open  ftp     vsftpd 2.3.4
+| ftp-anon: Anonymous FTP login allowed (230)
+| ftp-syst:
+|   STAT: FTP server status
+|   Connected to 10.0.3.7
+|   Logged in as ftp
+|   TYPE: ASCII
+```
+
+---
+
+### 3. Conectarse al servidor FTP
+
+```bash
+ftp [IP]
+```
+
+- Si permite **login anónimo**:
+    
+    - Usuario: `anonymous`
+        
+    - Contraseña: cualquier valor (o vacío).
+        
+
+---
+
+## 📂 Uso de comandos FTP
+
+Dentro de la sesión FTP, algunos comandos útiles son:
+
+- `ls` / `dir` → listar archivos
+    
+- `cd <directorio>` → cambiar de carpeta
+    
+- `pwd` → mostrar directorio actual
+    
+- `get <archivo>` → descargar un archivo del servidor
+    
+- `put <archivo>` → subir un archivo al servidor
+    
+- `mget *` → descargar múltiples archivos
+    
+- `delete <archivo>` → borrar archivo
+    
+- `bye` / `quit` → salir de la sesión
+    
+
+---
+
+## 📝 Ejemplo práctico
+
+### Escaneo y detección
+
+```bash
+nmap -p21 -sV 10.0.3.9
+```
+
+Salida:
+
+```
+21/tcp open  ftp   vsftpd 2.3.4
+```
+
+### Enumeración con scripts
+
+```bash
+nmap -p21 -sV -sC 10.0.3.9
+```
+
+Salida:
+
+```
+ftp-anon: Anonymous FTP login allowed
+ftp-syst: 
+  TYPE: ASCII
+  Logged in as ftp
+```
+
+### Conexión anónima
+
+```bash
+ftp 10.0.3.9
+Name: anonymous
+Password: [cualquiera]
+230 Login successful
+```
+
+### Transferencia de archivos
+
+```bash
+ftp> ls -la
+ftp> get flag.txt      # Descargar archivo
+ftp> put test.txt      # Subir archivo
+```
+
+---
+
+## ⚠️ Riesgos de FTP
+
+- No cifra credenciales ni archivos → **tráfico en claro**.
+    
+- Login anónimo puede dar acceso a archivos sensibles.
+    
+- Versiones antiguas como **vsFTPd 2.3.4** tienen vulnerabilidades conocidas.
+    
+
+---
