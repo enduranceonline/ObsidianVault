@@ -516,13 +516,16 @@ Tienes una máquina víctima con IP `192.168.1.35`.
 
 ---
 
-#  FTP (File Transfer Protocol)
+#  📌 FTP (File Transfer Protocol)
 
 ## 🔹 Definición
-- Protocolo para **transferir archivos** entre equipos conectados a una red.  
-- **Puerto por defecto:** `21/tcp`  
-- Intercambio de ficheros **sin cifrado** → inseguro.  
-- Versiones seguras:
+Protocolo para **transferir archivos** entre equipos conectados a una misma red.  
+
+ **Puerto por defecto:** `21/tcp`.  A veces lo vamos a encontrar en otros puertos. De ahi la importancia  de hacer el nmap sobre todos los puertos con el -sV para ver que servicio hay detras de cada uno de esos puertos.
+ 
+ Intercambio de ficheros **sin cifrado** → inseguro.  No se debería utilizar y está pensado para dar la máxima velocidad de conexión. Incluso no nos cifraria el propio login del usuario en caso de ser necesario.
+
+Versiones seguras a día de hoy:
   - **SFTP** (Secure FTP sobre SSH)  
   - **SCP** (Secure Copy)  
 
@@ -668,3 +671,250 @@ ftp> put test.txt      # Subir archivo
     
 
 ---
+# 📌 HTTP y Fuerza Bruta de Directorios
+
+## 🔹 HTTP (HyperText Transfer Protocol)
+
+- Protocolo de la **capa de aplicación** usado para la transmisión de documentos hipermedia (HTML).
+- Se utiliza en la comunicación entre **navegadores** y **servidores web**.
+- **Puertos por defecto**:
+	  - `80` → HTTP
+	  - `443` → HTTPS
+- Información que puede revelar:
+	   -  Servidor y versión.
+		Apache, ISS?....versión?
+	  - Lenguaje de programación.
+		PHP, ASPnet?
+	  - Tecnologías y librerías.
+		CMS
+	  - Estructura de directorios y ficheros.
+		Funcionalidad de subida de archivos 
+
+---
+
+## 🔹 Enumeración HTTP
+
+### 1. Nmap
+
+Permite conocer detalles del servidor, métodos aceptados y directorios/archivos existentes.
+
+Ejemplos:
+
+`# Escaneo con scripts por defecto
+
+````
+nmap -p80,443 -sC [IP]
+````
+
+Buscamos una pequeña fuerza bruta de directorios y archivos con un diccionario pequeño. Puede darnos algo de información sobre todo si aparecen archivos muy cantosos como un /admin
+
+ `#Escaneo con scripts específicos de HTML
+
+````
+nmap -p80,443 --script=*html* [IP]
+````
+
+## 🔹 Fuerza Bruta de Directorios
+
+La fuerza bruta de directorios sirve para averiguar si la propia aplicación web tiene algun directorio/archivo que no este visible directamente en una navegación propia del usuario a través de Firefox.
+
+Vamos a buscar, si analizando las respuestas del servidor a diferentes rutas, nos devuelve un 200 okey.Si es un 200, es un found y por tanto existe en un servidor.
+
+---
+### Herramientas principales
+
+#### 🔹**dirb** → **escaneo de directorios y archivos con diccionarios**
+Vienen por defecto en la Kali linux y nos sirven para el eJPT
+
+#### 🔹👉dirsearch → no viene instalada por defecto
+```
+sudo apt install dirsearch
+dirsearch -u [URL] -w [wordlist]
+dirsearch -u [URL] -i 200,301
+```
+
+#### 🔹👉GoBuster→ no viene instalada por defecto
+```
+sudo apt install gobuster
+gobuster dir -u [URL] -w [wordlist]
+```
+ 
+#### 🔹**SecLists** → colección de diccionarios muy usada en pentesting.
+
+#### 🔹 **CeWL** (Custom Word List) → genera diccionarios a partir de páginas web.
+
+---
+### Herramientas extra (fuzzing)
+
+El **fuzzing es una técnica de prueba de seguridad** que consiste en enviar datos aleatorios, manipulados o maliciosos a una aplicación o sistema con el objetivo de descubrir vulnerabilidades. Básicamente, se trata de «alimentar» la aplicación con entradas inesperadas y observar su comportamiento para detectar errores, fallos o condiciones inseguras.
+
+**El objetivo principal del fuzzing** es identificar vulnerabilidades que podrían ser explotadas por atacantes para comprometer la seguridad de un sistema. Al encontrar y corregir estas vulnerabilidades, los desarrolladores pueden fortalecer sus aplicaciones y prevenir posibles brechas de seguridad.
+
+🔹👉 Wfuzz→ Se puede usar también para hacer fuerza bruta gracias a su potencia, pero se usa más para hacer "fuzzing". 
+
+`# Uso principal: Fuzzing de parámetros, rutas, cabeceras, POST data… muy flexible.
+`# Extra:También se puede usar en **fuerza bruta** gracias a su potencia.
+`# Palabra reservada: `FUZZ` (indica el punto de inyección), donde vamos a cargar las entradas del payload (diccionario).
+`# Ventaja: Tiene muchas opciones de filtrado (por código, tamaño, número de palabras o líneas).
+`# Inconveniente: Más lento que `ffuf`.
+
+```
+wfuzz -w [wordlist] [URL]/FUZZ
+```
+ejemplo:
+```
+wfuzz -w /usr/share/wordlists/dirb/common.txt http://target.com/FUZZ
+```
+Ejemplo con filtro (200 OK):
+```
+wfuzz -w /usr/share/wordlists/dirb/common.txt --hc 404 http://target.com/FUZZ
+```
+
+🔹👉 ffuf→ 
+
+`# Fuzzing rápido y eficiente, diseñado para ganar velocidad
+`# Instalada por defecto en Kali
+`# Fuzz Faster U Fool
+`# Palabra reservada "FUZZ"
+`# Ventaja: Mucho más rápido que Wfuzz (usa concurrencia masiva con threads).
+`# Inconveniente: Tiene menos opciones avanzadas de filtrado, aunque cubre lo más común.
+
+```
+ffuf -w [wordlist] -u [URL]/FUZZ
+```
+Ejemplo:
+```
+ffuf -w /usr/share/wordlists/dirb/common.txt -u http://target.com/FUZZ
+```
+Ejemplo con filtro (200 OK):
+```
+ffuf -w /usr/share/wordlists/dirb/common.txt -u http://target.com/FUZZ -mc 200
+```
+
+| Herramienta | Velocidad ⚡ | Flexibilid 🎛️ | Filtrado 🔍  | Ideal para…                                 |
+| ----------- | ----------- | -------------- | ------------ | ------------------------------------------- |
+| **Wfuzz**   | Media       | Alta           | Muy avanzado | Fuzzing detallado y controlado              |
+| **ffuf**    | Muy alta    | Media          | Básico       | Enumeraciones rápidas y bruteforce de rutas |
+
+---
+
+### 📂 Diccionarios en Kali Linux
+
+Ruta común:
+
+`cd /usr/share/wordlists ls`
+
+Ejemplo de carpetas y archivos:
+
+- `rockyou.txt.gz` (famoso diccionario comprimido).
+    
+- `dirb/` → contiene listas como `common.txt`, `big.txt`, `small.txt`.
+    
+- Otros: `fasttrack.txt`, `nmap.lst`, `wfuzz/`, etc.
+    
+
+---
+
+### 🛠️ Uso de dirb
+
+Ejemplo de fuerza bruta contra un sitio web:
+
+`dirb http://[IP]/usr/share/wordlists/dirb/common.txt`
+
+---
+
+### 🛠️ Uso de CeWL
+
+Opciones básicas:
+
+`# Ayuda   
+
+````
+cewl -h
+````
+
+`# Generar diccionario desde una URL y guardarlo en dict.txt 
+
+```
+cewl [URL] -w dict.txt
+```  
+
+`# Limitar a profundidad de 9 enlaces 
+
+````
+cewl [URL] -m 9`
+````
+
+---
+
+## 🔹 Instalación de SecLists
+
+En Kali:
+
+`sudo apt install seclists`
+
+Diccionarios quedan en:
+
+`/usr/share/seclists`
+
+---
+# 📌  HTTP , CMS
+
+## 🔹 CMS (Content Management System)
+- **Definición:** Plataforma que permite **crear, gestionar y modificar contenido web** sin necesidad de programar desde cero.  
+- Son muy utilizados en Internet → objetivos comunes en auditorías/pentesting.  
+
+### ✅ Importancia en Ciberseguridad
+- Son un **target frecuente de ataques**.  
+- Presentan gran cantidad de **vulnerabilidades conocidas** (versiones antiguas, plugins inseguros, temas mal programados).  
+
+### ✅ Principales CMS
+- **WordPress**
+  - El más popular (>40% de webs).  
+  - Archivos clave: `wp-config.php`.  
+  - Estructura típica: `/wp-admin`, `/wp-content/`, `/wp-includes/`.  
+- **Drupal**
+  - Muy usado en webs institucionales.  
+  - Archivos clave: `/sites/default/settings.php`.  
+  - Estructura típica: `/drupal`, `/modules`, `/themes`.  
+
+---
+
+## 🔹 Recolección de Información en CMS
+Objetivo: **enumerar al máximo la web para encontrar puntos débiles**.  
+
+### 📌 Información a obtener
+1. **Versión del CMS**  
+   - Determina si existen vulnerabilidades públicas.  
+   - Plugins/extensiones: *Wappalyzer*, `whatweb`, `wpscan`, `droopescan`.  
+
+2. **Usuarios**  
+   - WordPress: enumeración con `wpscan` o fuzzing (`/author=1`, `/author=2`).  
+   - Drupal: módulos mal configurados pueden exponer usuarios.  
+
+3. **Plugins y Módulos**  
+   - Plugins vulnerables = puerta de entrada muy común.  
+   - WordPress: `wpscan --enumerate p`.  
+   - Drupal: `droopescan`.  
+
+4. **Temas**  
+   - Enumerar temas usados para buscar exploits conocidos.  
+
+5. **Archivos de Configuración (⚠️ muy críticos)**  
+   - **WordPress** → `wp-config.php`  
+     - Contiene credenciales de base de datos (`DB_USER`, `DB_PASSWORD`, `DB_NAME`).  
+   - **Drupal** → `/sites/default/settings.php`  
+     - Contiene parámetros de conexión a la base de datos.  
+
+---
+
+## 🔹 Herramientas útiles para enumeración CMS
+- **whatweb** → identifica tecnologías y CMS.  
+- **wpscan** → enfocado en WordPress (usuarios, plugins, temas, versiones).  
+- **droopescan** → enumeración de Drupal.  
+- **gobuster / ffuf / wfuzz** → fuzzing de rutas para descubrir paneles ocultos.  
+
+---
+
+📚 **Recurso recomendado:**  
+👉 [Wiki Securiters - CMS](https://wiki.securiters.com/securiters-wiki/web/cms)
