@@ -176,7 +176,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 237.5
+    "width": 342.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -194,10 +194,12 @@
   },
   "active": "6d9e7dee764d85ad",
   "lastOpenFiles": [
-    "Ciberseguridad/Certificaciones/eJPT/📘 Apuntes eJPTv2 - 1. Índice.md",
-    "GitHub/📄 Informe de configuración Obsidian Vault + GitHub (SSH).md",
     "GitHub/Subir Cambios a GitHub de un repositorio.md",
+    "Ciberseguridad/Scripting Bash/Bash Scripting Notes.md",
     "Ciberseguridad/Certificaciones/eJPT/📘 Apuntes eJPTv2 - 2. Recolección de información.md",
+    "Ciberseguridad/Certificaciones/eJPT/📘 Apuntes eJPTv2 - 1. Índice.md",
+    "Ciberseguridad/Maquinas/tryhackme/Basic Pentesting.md",
+    "GitHub/📄 Informe de configuración Obsidian Vault + GitHub (SSH).md",
     "Ciberseguridad/Certificaciones/eJPT/Anexos/Pasted image 20250907184035.png",
     "Ciberseguridad/Certificaciones/eJPT/Anexos/Pasted image 20250907184025 5.png",
     "Ciberseguridad/Certificaciones/eJPT/Anexos/Pasted image 20250907184025 4.png",
@@ -233,8 +235,6 @@
     "Excalidraw/Scripts/Downloaded/Select Elements of Type.md",
     "Excalidraw/Scripts/Downloaded/Repeat Elements.md",
     "Excalidraw/Scripts/Downloaded/Rename Image.md",
-    "Excalidraw/Scripts/Downloaded/Printable Layout Wizard.md",
-    "Excalidraw/Scripts/Downloaded/Palette loader.md",
     "Ciberseguridad/Maquinas/tryhackme",
     "Ciberseguridad/Maquinas",
     "Sin título.base",

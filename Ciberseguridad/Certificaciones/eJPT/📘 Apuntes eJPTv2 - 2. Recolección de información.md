@@ -42,6 +42,10 @@ Realiza diferentes tipos de escaneo (ping, TCP, UDP, SYN, etc.) para mapear el e
 	interfaces de red que el sistema tiene disponibles y su configuración actual.
 ### 2.1 Salida de `ifconfig`
 ![[Pasted image 20250907150853.png]]
+OBSERVACION:
+
+
+
 
 - **`eth0` → Interfaz Ethernet (red real o virtual)**
     - Es la tarjeta de red principal que conecta tu máquina al resto de la red.
@@ -156,6 +160,18 @@ nmap [IP] -vv
 nmap -sV [IP]
 ```
 
+
+### 🔹 👉Opción `-oN
+
+- **Descripción:** Exporta los resultados de nmap a un fichero de texto.
+    
+- **Ejemplo:**
+    
+
+```
+nmap -oN [nombre del fichero] [IP] 
+```
+
 ### 🔹 Opción `-O`
 
 - **Descripción:** Identifica el **sistema operativo** del host.
@@ -163,7 +179,7 @@ nmap -sV [IP]
 - **Ejemplo:**
     
 
-```bash
+```
 nmap -O [IP]
 ```
 
@@ -186,7 +202,7 @@ nmap -oA resultado [IP]
 
 _(Genera: `resultado.nmap`, `resultado.gnmap`, `resultado.xml`)_
 
-### 🔹 Opción `-sC`
+### 🔹👉Opción `-sC`
 
 - **Descripción:** Ejecuta los **scripts por defecto** de Nmap (NSE).
     
@@ -200,6 +216,7 @@ nmap -sC [IP]
 ### 🔹 Opción `--min-rate
 
 - **Descripción:** Envía los paquetes a una velocidad mínima especificada (en paquetes por segundo).  
+	
 	Útil para acelerar el escaneo.  
     
 - **Ejemplo:**
@@ -209,7 +226,14 @@ nmap -sC [IP]
 nmap --min-rate 5000 [IP]
 ```
 
-### 🔹 Opción `-Pn`
+### 🔹 Opción `-T
+
+- **Descripción:** Le indicas un valor del 0 al 5 y cuando mayor sea el valor, mas rápido ira. **Escaneo Agresivo** (Muchas peticiones al servidor que dejan rastro). 
+	
+	Es como usar un --min-rate pero con otra escala de valores y mas funcional.
+
+
+### 🔹👉 Opción `-Pn`
 
 - **Descripción:** Trata al host como **online**, sin hacer ping previo.  Algunas veces nos lo pedirá el propio nmap cuando la maquina no responda a los pings que estamos lanzando
     Se usa cuando ICMP está bloqueado por firewall.
@@ -453,3 +477,41 @@ Algunos grupos comunes de scripts:
 nmap -p80,443 --script=vuln [IP]
 ```
 
+
+## 📝 Ejercicio práctico
+
+## Escenario
+
+Estás en un laboratorio de Pentesting.  
+Tienes una máquina víctima con IP `192.168.1.35`.
+
+1. **Identifica puertos abiertos** (es decir, en qué interfaces está escuchando el servidor):
+    
+    `sudo nmap -p- --open --min-rate 5000 -sS -n -Pn 192.168.1.35 -oN ports`
+    
+    👉 Resultado esperado (ejemplo):
+    
+    `PORT      STATE SERVICE 22/tcp    open  ssh 80/tcp    open  http 3306/tcp  open  mysql`
+    
+2. **Enumera los servicios que se ejecutan en esos puertos**:
+    
+    `nmap -p22,80,3306 -sCV 192.168.1.35 -oN services`
+    
+    👉 Resultado esperado (ejemplo):
+    
+    `22/tcp   open  ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 80/tcp   open  http    Apache httpd 2.4.29 3306/tcp open  mysql   MySQL 5.7.33`
+    
+3. **Analiza la relación con la teoría:**
+    
+    - La **interfaz de red** de la víctima es la que tiene la IP `192.168.1.35`.
+        
+    - El **servidor** está ofreciendo múltiples servicios:
+        
+        - SSH en el puerto 22.
+            
+        - Web en el puerto 80.
+            
+        - Base de datos en el puerto 3306.
+            
+
+👉 **Conclusión:** gracias a Nmap ves cómo un servidor utiliza su interfaz de red para exponer servicios a través de diferentes puertos.

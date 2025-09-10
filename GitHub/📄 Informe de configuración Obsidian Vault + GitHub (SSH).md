@@ -49,13 +49,14 @@ Aquí tienes un **informe en Markdown** con todo lo que hemos hecho hasta ahora 
 
 Traer cambios del remoto:
 
-`git pull origin main`
+`git pull
 
 ### 2. Tras realizar cambios en el vault
 
 Subir cambios al repositorio:
 
-`git add . git commit -m "Descripción breve de los cambios" git push origin main`
+`git add . 
+`git commit -m "Descripción breve de los cambios" git push origin main`
 
 ### 3. En caso de conflicto
 
