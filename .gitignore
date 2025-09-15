@@ -18,3 +18,7 @@
 .DS_Store
 Thumbs.db
 Desktop.ini
+.obsidian/workspace.json
+.obsidian/appearance.json
+.obsidian/cache/
+.obsidian/plugins/**/data.json
