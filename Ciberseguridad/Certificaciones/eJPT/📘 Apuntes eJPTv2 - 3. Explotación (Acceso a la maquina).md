@@ -1,1 +1,0 @@
-#apuntes #certificacion #eJPT

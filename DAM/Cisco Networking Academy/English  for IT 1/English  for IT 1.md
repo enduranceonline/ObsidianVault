@@ -9,69 +9,64 @@
 ### 📖 Impersonal Passive Voice
 
 - Usada para cosas que se **piensan, creen, dicen o reportan**.
-    
+
 - **Estructura:**
-    
-    ```
-	 It + be + past participle (reporting verb) + that + clause
-    ```
-    
-    👉 _It is believed that the tests have produced false positives._
-    
+
+```
+It + be + past participle (reporting verb) + that + clause
+```
+
+👉 _It is believed that the tests have produced false positives._
 
 ### 📖 Personal Passive Voice
 
 - Usada con verbos como **believe, expect, find, know, report, say, think, understand**.
-    
+
 - **Estructura:**
-    
-    ```
-    Subject + Passive Verb + to-Infinitive
-    ```
-    
-    👉 _The tests are known to produce false positives._
-    
+```
+ Subject + Passive Verb + to-Infinitive
+ ```
+
+👉 _The tests are known to produce false positives._
 
 ### 1.1.3 Exercise 1 – Complete the sentences
 
 1. .......... that user flows should be presented with more detail to avoid losing customer attention.  
-    ✅ **It is understood**
-    
+✅ **It is understood**
+
 2. Single sign-on functionality .......... to be a standard for identity providers.  
-    ✅ **is considered**
-    
+✅ **is considered**
+
 3. It was our goal .......... at the end of the month, but I’d suggest keeping a balance between delivery and meeting customer needs.  
-    ✅ **to release it**
-    
+✅ **to release it**
+
 4. The feedback .......... show that demand for UX improvements has increased.  
-    ✅ **is expected to**
-    
+✅ **is expected to**
+
 5. The last option .......... the best option, as it lessens the risks.  
-    ✅ **is thought to be**
-    
+✅ **is thought to be**
+
 6. The team .......... that the feedback results will show more demand for UX improvements.  
-    ✅ **knows**
-    
+✅ **knows**
 
 ---
 
 ### 1.1.4 Exercise 2 – Complete the sentences
 
 1. The board has asked when we will deliver the supplier evaluation module to the customer, and I said .......... :  
-    ✅ **we are hoping to deliver it by the end of March at the latest.**
-    
+✅ **we are hoping to deliver it by the end of March at the latest.**
+
 2. The results of the customer survey should be available next week, and .......... :  
-    ✅ **it is expected that it will show a demand for UX improvements.**
-    
+✅ **it is expected that it will show a demand for UX improvements.**
+
 3. The pandemic has had an impact on our resources, because .......... :  
-    ✅ **more than half the team have been absent from work.**
-    
+✅ **more than half the team have been absent from work.**
+
 4. Since we are at risk of not delivering the required functionality on time, .......... :  
-    ✅ **we should choose the last option as we know it is the safest choice.**
-    
+✅ **we should choose the last option as we know it is the safest choice.**
+
 5. In a competitive market, .......... :  
-    ✅ **reliable suppliers are considered to be essential.**
-    
+✅ **reliable suppliers are considered to be essential.**
 
 ---
 
@@ -80,17 +75,11 @@
 ### 📖 Relative Pronouns (Defining & Non-defining clauses)
 
 - **who** → personas
-    
 - **which** → cosas
-    
 - **that** → personas/cosas
-    
 - **whose** → posesión
-    
 - **where** → lugar
-    
 - **when** → tiempo
-    
 
 👉 _The beta test which we ran recently has been very useful._  
 👉 _That’s who I’m talking about._  
@@ -99,65 +88,61 @@
 ### 📖 Nominal Relative Clauses
 
 - Usan **what, when, where, how, who, why**.
-    
+
 - Se refieren a “the thing that…”  
-    👉 _That’s what I was talking about during the meeting._
-    
+👉 _That’s what I was talking about during the meeting._
 
 > ⚡ Nota: El pronombre relativo más usado es **what**.
-
 
 ---
 
 ### 1.2.3 Exercise 1 – Complete the sentences
 
 1. Talking to the customer service team is .......... they should be doing.  
-    ✅ **what**
-    
+✅ **what**
+
 2. The feedback from the survey .......... we carried out last month has been very positive.  
-    ✅ **which**
-    
+✅ **which**
+
 3. Problems occur .......... we ignore demands for improvements in UX experience.  
-    ✅ **when**
-    
+✅ **when**
+
 4. This is Ife, .......... team is renegotiating the deal with the client.  
-    ✅ **whose**
-    
+✅ **whose**
+
 5. That is .......... I am inviting you to the feedback session.  
-    ✅ **why**
-    
+✅ **why**
+
 6. That is .......... I was hoping to discuss with you.  
-    ✅ **what**
-    
+✅ **what**
 
 ---
 
 ### 1.2.4 Exercise 2 – Complete the conversations
 
 1. Person A: Could you help me understand how it’s going to work after the product launch?  
-    Person B: ..........  
-    ✅ **It would be best if you could go through the documentation which I sent you last week.**
-    
+Person B: ..........  
+✅ **It would be best if you could go through the documentation which I sent you last week.**
+
 2. Person A: What is your feedback on the product configuration?  
-    Person B: ..........  
-    ✅ **Please tell the team who implemented it that they’ve got our initial approval.**
-    
+Person B: ..........  
+✅ **Please tell the team who implemented it that they’ve got our initial approval.**
+
 3. Person A: Now the entry page has only three simple dashboards, nothing fancy.  
-    Person B: ..........  
-    ✅ **That’s exactly what the customers need.**
-    
+Person B: ..........  
+✅ **That’s exactly what the customers need.**
+
 4. Person A: Do we get more support team help during the assessment stage?  
-    Person B: ..........  
-    ✅ **The only people you engage in the beginning are the field teams, whom you've already met.**
-    
+Person B: ..........  
+✅ **The only people you engage in the beginning are the field teams, whom you've already met.**
+
 5. Person A: How many people are giving us feedback regarding this issue?  
-    Person B: ..........  
-    ✅ **The number of customers who mentioned it has decreased.**
-    
+Person B: ..........  
+✅ **The number of customers who mentioned it has decreased.**
+
 6. Person A: Have you seen the results of the customer survey?  
-    Person B: ..........  
-    ✅ **Is that the one which was sent out last month?**
-    
+Person B: ..........  
+✅ **Is that the one which was sent out last month?**
 
 ---
 
@@ -166,60 +151,56 @@
 ### 📖 Vocabulario clave
 
 - **mention an issue** → comentar un problema sin dar detalle.
-    
+
 - **invest money** → usar dinero para generar más.
-    
+
 - **reveal information** → dar información que no se conocía.
-    
+
 - **desire something** → expresar un deseo.
-    
+
 - **go back to something** → volver a hablar/pensar en algo.
-    
 
 ### 📖 Conceptos IT
 
 - **Net Promoter Score (NPS):** mide satisfacción y lealtad de clientes.
-    
-- **UX (User Experience):** experiencia personal del usuario al usar un producto.
-    
+    - **UX (User Experience):** experiencia personal del usuario al usar un producto.
+
 - **Detractors:** clientes insatisfechos.
-    
 
 ### 📖 Claves de Listening
 
 - Analizar el **feedback de usuarios**.
-    
-- Detectar detractores.
-    
-- Valorar riesgos y beneficios de invertir en **UX improvements**.
-    
----
 
+- Detectar detractores.
+
+- Valorar riesgos y beneficios de invertir en **UX improvements**.
+
+---
 ### 1.3.2 Vocabulary 2 – Match definitions
 
 - A key indicator of customer satisfaction → ✅ **Net Promoter Score (NPS)**
-    
+
 - A customer who has had a negative experience → ✅ **Detractor**
-    
+
 - The personal experience of a user → ✅ **User Experience (UX)**
-    
+
 
 ---
 
 ### 1.3.4 Exercise – Listening comprehension
 
 1. The requests for UX improvements:  
-    ✅ **have increased since last year.**
-    
+✅ **have increased since last year.**
+
 2. The product managers:  
-    ✅ **are not sure about investing in UX improvements.**
-    
+✅ **are not sure about investing in UX improvements.**
+
 3. If the product managers interview the detractors:  
-    ✅ **they could learn why customers need UX improvements.**
-    
+✅ **they could learn why customers need UX improvements.**
+
 4. The product managers decide:  
-    ✅ **to concentrate on the opportunities of making UX improvements.**
-    
+✅ **to concentrate on the opportunities of making UX improvements.**
+
 
 ---
 
@@ -228,18 +209,18 @@
 ### 📖 Uso
 
 - Situaciones **hipotéticas / irreales**, como en el segundo condicional.
-    
+
 - **Estructura:**
-    
-    ```
-    As if / As though + past simple
-    ```
-    
-    👉 _You’re asking us to do more work, as if we didn’t have enough already._  
-    👉 _They’re treating me as if I were responsible for the entire problem._
-    
+
+```
+  As if / As though + past simple
+  ```
+
+👉 _You’re asking us to do more work, as if we didn’t have enough already._  
+👉 _They’re treating me as if I were responsible for the entire problem._
+
 - Expresan comparación o irrealidad (≃ _like this / like that_).
-    
+
 
 ---
 

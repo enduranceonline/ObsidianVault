@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "GitHub/Subir Cambios a GitHub de un repositorio.md",
+                "file": "GitHub/Linux actualizar repositorio Obsidian.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Subir Cambios a GitHub de un repositorio"
+              "title": "Linux actualizar repositorio Obsidian"
             }
           }
         ]
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 256.5
+    "width": 201.5
   },
   "right": {
     "id": "23069168957f2881",
@@ -141,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "GitHub/Subir Cambios a GitHub de un repositorio.md",
+                "file": "GitHub/Linux actualizar repositorio Obsidian.md",
                 "followCursor": false,
-                "showSearch": false,
+                "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Esquema de Subir Cambios a GitHub de un repositorio"
+              "title": "Esquema de Linux actualizar repositorio Obsidian"
             }
           },
           {
@@ -165,7 +165,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 231.5
+    "width": 259.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -183,14 +183,29 @@
   },
   "active": "c7e256c93442bcc7",
   "lastOpenFiles": [
+    "GitHub/Subir Cambios a GitHub de un repositorio.md",
+    "Ciberseguridad/Certificaciones/eJPT/3. 🔐 Apuntes eJPTv2 -  Explotación (Acceso a la maquina).md",
     "Ciberseguridad/WarGames/BanditOverTheWire/BanditOverTheWire_Soluciones_.md",
+    "Ciberseguridad/Certificaciones/eJPT/4. 🚩 Apuntes eJPTv2 -  Enumeración interna.md",
+    "Ciberseguridad/Certificaciones/eJPT/2. 📘 Apuntes eJPTv2 -  Recolección de información.md",
+    "Ciberseguridad/Certificaciones/eJPT/5. 🔀 Apuntes eJPTv2 -  Pivoting.md",
+    "Ciberseguridad/Certificaciones/eJPT/1. 📇 Apuntes eJPTv2 - Índice.md",
+    "GitHub/Linux actualizar repositorio Obsidian.md",
+    "GitHub/📄 Informe de configuración Obsidian Vault + GitHub (SSH).md",
+    "GitHub/Anexos/Screenshot 2025-09-07 170952.png",
+    "DAM/Cisco Networking Academy/Fundamentos de Python 1/Fundamentos de Python 1.md",
+    "DAM/Cisco Networking Academy/English  for IT 1/English  for IT 1.md",
+    "Ciberseguridad/Maquinas/HTB/starting_point/Archetype/Archetype.md",
+    "Ciberseguridad/Maquinas/HTB/starting_point/Archetype/Apuntes.md",
+    "Ciberseguridad/Maquinas/HTB/starting_point/Archetype/writeup.pdf",
+    "Ciberseguridad/Maquinas/HTB/starting_point/Archetype",
+    "Ciberseguridad/Maquinas/HTB/starting_point",
+    "Ciberseguridad/WarGames/BanditOverTheWire/Passwords Bandit OverTheWire.md",
+    "Ciberseguridad/Maquinas/HTB",
+    "Ciberseguridad/Certificaciones/eJPT/labs",
     "Ciberseguridad/Bases_Ciberseguridad/Lenguajes/Scripting Bash/Bash Scripting Notes.md",
-    "Ciberseguridad/Certificaciones/eJPT/📘 Apuntes eJPTv2 - 2. Recolección de información.md",
     "Ciberseguridad/Certificaciones/eJPT/Anexos/gobuster.png",
     "Ciberseguridad/Certificaciones/eJPT/Anexos/1.png",
-    "Ciberseguridad/WarGames/BanditOverTheWire/Passwords Bandit OverTheWire.md",
-    "Ciberseguridad/Certificaciones/eJPT/📘 Apuntes eJPTv2 - 1. Índice.md",
-    "GitHub/📄 Informe de configuración Obsidian Vault + GitHub (SSH).md",
     "Ciberseguridad/Certificaciones/ComTIA/network+/Apuntes_Udemy/Chapter_2_Cabling_and_Topology/Anexos/utp-cable.jpg",
     "Ciberseguridad/Certificaciones/ComTIA/network+/Apuntes_Udemy/Chapter_2_Cabling_and_Topology/Anexos/twinax-cable.webp",
     "Ciberseguridad/Certificaciones/ComTIA/network+/Apuntes_Udemy/Chapter_2_Cabling_and_Topology/Anexos/three-tier-model.webp",
@@ -198,7 +213,6 @@
     "Ciberseguridad/Certificaciones/ComTIA/network+/Apuntes_Udemy/Chapter_2_Cabling_and_Topology/Anexos/plenum-space-diagram.jpg",
     "Ciberseguridad/Certificaciones/ComTIA/network+/Apuntes_Udemy/Chapter_2_Cabling_and_Topology/Anexos/spine-and-leaf-architecture-768x296.webp",
     "Ciberseguridad/Certificaciones/ComTIA/network+/Apuntes_Udemy/Chapter_2_Cabling_and_Topology/Anexos/mesh-topology.jpg",
-    "Ciberseguridad/Certificaciones/ComTIA/network+/Apuntes_Udemy/Chapter_2_Cabling_and_Topology/Anexos/fiber-optic-cable-structure.webp",
     "Ciberseguridad/Certificaciones/ComTIA/network+/Apuntes_Udemy/Chapter_2_Cabling_and_Topology/Anexos",
     "Ciberseguridad/Certificaciones/ComTIA/network+/Apuntes_Udemy/Chapter_1_Network Models/Anexos",
     "Ciberseguridad/Certificaciones/Anexos",
