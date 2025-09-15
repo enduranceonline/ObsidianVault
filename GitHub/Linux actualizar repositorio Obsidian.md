@@ -1,3 +1,9 @@
+
+git pull --rebase     # por si hay cambios en remoto
+git add -A
+git commit -m "Actualiza notas"
+git push
+
 ## 1) Prueba la conexión (modo verbose para diagnosticar)
 
 `ssh -vT git@github.com`
