@@ -12,20 +12,19 @@
 **Objetivo:** confirmar que estamos dentro de la red de Starting Point y que la máquina objetivo es alcanzable.
 
 - **Interfaz VPN activa:**
-    
-    ```bash
-    ip a | sed -n '/tun0/,+5p'
-    # inet 10.10.14.144/23 dev tun0   ← IP interna HTB
-    ```
-    
+
+ ```bash
+ip a | sed -n '/tun0/,+5p'
+# inet 10.10.14.144/23 dev tun0   ← IP interna HTB
+```
+
 - **IP de la máquina (dinámica en SP):**
-    
-    ```
-    10.129.79.39
-    ```
-    
+
+```
+ 10.129.79.39
+```
+
 - **Nota:** en HTB muchas máquinas **no responden a ping**. Valida vida con `nmap -Pn` a puertos concretos.
-    
 
 ---
 
@@ -113,9 +112,7 @@ cat prod.dtsConfig
 **Hallazgo:** credenciales **Windows Auth** para MSSQL:
 
 - Usuario: `ARCHETYPE\sql_svc`
-    
 - Password: `M3g4c0rp123`
-    
 
 > El write-up lo confirma y propone usar **Impacket** → `mssqlclient.py` para autenticarse al servidor MSSQL.
 
@@ -153,9 +150,7 @@ Una vez habilitado, prueba con algo sencillo como:
 #### 🔹 Tips dentro de `mssqlclient.py`
 
 - Si te lías, recuerda que **`mssqlclient.py` no es un PowerShell**, es un **prompt SQL**.
-    
 - **Cada comando debe estar completo en una sola línea**.
-    
 - Si recibes un error como _“Unclosed quotation mark”_, revisa que has cerrado `' '` correctamente.
 ---
 

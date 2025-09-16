@@ -1,4 +1,5 @@
-
+ssh -vT git@github.com
+eval "$(ssh-agent -s)" ssh-add ~/.ssh/id_ed25519
 git pull --rebase     # por si hay cambios en remoto
 git add -A
 git commit -m "Actualiza notas"

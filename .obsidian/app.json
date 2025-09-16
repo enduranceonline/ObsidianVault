@@ -1,3 +1,4 @@
 {
-  "attachmentFolderPath": "./Anexos"
+  "attachmentFolderPath": "./Anexos",
+  "promptDelete": false
 }
