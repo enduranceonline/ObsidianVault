@@ -5,79 +5,74 @@ git add -A
 git commit -m "Actualiza notas"
 git push
 
-## 1) Prueba la conexión (modo verbose para diagnosticar)
-
-`ssh -vT git@github.com`
-
-- Si ves `Permission denied (publickey)` y líneas de `Offering public key: ...` sin éxito, sigue abajo.
-    
-
----
-
-## 2) ¿Tienes clave SSH?
-
-`ls -la ~/.ssh`
-
-Mira si existen `id_ed25519` y `id_ed25519.pub` (o `id_rsa`/`.pub`).
-
-### Si **NO** tienes clave, créala:
-
-`ssh-keygen -t ed25519 -C "tu_email_de_github" # Enter para ruta por defecto (~/.ssh/id_ed25519) # Pon passphrase si quieres`
+ 🚀. **cheatsheet** clara y separada en dos bloques: **Windows (Git Bash/PowerShell)** y **Linux (bash/zsh)**.
+1. Arrancas el agente SSH.
+2. Cargas tu clave privada (la que ya existe en `~/.ssh/id_ed25519`).
+3. Compruebas conexión con GitHub.
+4. Luego usas Obsidian con Git.
 
 ---
 
-## 3) Carga la clave en el agente
+# 🔑 Cheatsheet Git + SSH para Obsidian
 
-`eval "$(ssh-agent -s)" ssh-add ~/.ssh/id_ed25519`
+## 🟦 Windows (Git Bash o PowerShell)
 
-> Si tu clave privada tiene otro nombre, ajusta la ruta.
+```bash
+# 1. Iniciar el agente SSH (solo si no está en marcha)
+eval $(ssh-agent -s)
 
----
+# 2. Añadir tu clave privada al agente si usas ed25519:
+ssh-add ~/.ssh/id_ed25519
 
-## 4) Añade la **clave pública** a tu cuenta de GitHub
+# 3. Ver claves cargadas
+ssh-add -l
 
-Copia y pega en GitHub → _Settings_ → _SSH and GPG keys_ → **New SSH key**:
+# 4. Comprobar conexión con GitHub
+ssh -T git@github.com
 
-`cat ~/.ssh/id_ed25519.pub`
+# 5. Flujos Git habituales
+git status
+git fetch --all --prune
+git pull origin main
+git push origin main
+```
 
-Prueba de nuevo:
+📌 Nota: en Windows puede que necesites arrancar `ssh-agent` como servicio:
 
-`ssh -T git@github.com # Esperado: "Hi enduranceonline! You've successfully authenticated..."`
-
----
-
-## 5) Asegura permisos y fuerza el uso de esa clave
-
-A veces SSH ignora claves por permisos o por tener varias. Arregla permisos y crea config mínima:
-
-`chmod 700 ~/.ssh chmod 600 ~/.ssh/id_ed25519 chmod 644 ~/.ssh/id_ed25519.pub  cat > ~/.ssh/config << 'EOF' Host github.com   HostName github.com   User git   IdentityFile ~/.ssh/id_ed25519   IdentitiesOnly yes EOF chmod 600 ~/.ssh/config`
-
-Vuelve a probar:
-
-`ssh -T git@github.com`
-
----
-
-## 6) Empuja
-
-`git push`
+```powershell
+Get-Service ssh-agent | Set-Service -StartupType Automatic
+Start-Service ssh-agent
+```
 
 ---
 
-### Opcionales útiles
+## 🟩 Linux (bash/zsh)
 
-**SSH por puerto 443 (si red bloquea el 22):**
+```bash
+# 1. Iniciar el agente SSH (si no está activo)
+eval $(ssh-agent -s)
 
-`cat >> ~/.ssh/config << 'EOF'  Host github-443   HostName ssh.github.com   Port 443   User git   IdentityFile ~/.ssh/id_ed25519   IdentitiesOnly yes EOF  ssh -T github-443 # Si funciona, puedes apuntar el remoto a este host: git remote set-url origin github-443:enduranceonline/ObsidianVault.git`
+# 2. Añadir tu clave privada si usas ed25519:
+ssh-add ~/.ssh/id_ed25519
 
-**Usar HTTPS en vez de SSH:**
+# 3. Ver claves cargadas
+ssh-add -l
 
-`git remote set-url origin https://github.com/enduranceonline/ObsidianVault.git git push # Con 2FA te pedirá un Personal Access Token como contraseña.`
+# 4. Probar conexión con GitHub
+ssh -T git@github.com
+
+# 5. Flujos Git habituales
+git status
+git fetch --all --prune
+git pull origin main
+git push origin main
+```
 
 ---
 
-Si quieres, pega aquí el resultado de:
+✅ Con esto en ambos equipos:
 
-`ssh -vT git@github.com`
-
-(y ocultas cualquier dato sensible). Con eso te digo exactamente en qué paso está fallando (clave no encontrada, no cargada, permisos, etc.).
+1. Abres terminal.
+2. Cargas la clave en el agente.
+3. Pruebas conexión.
+4. Ya puedes trabajar desde Obsidian con `git pull/push`.
