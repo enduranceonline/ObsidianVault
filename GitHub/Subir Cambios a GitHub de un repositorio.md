@@ -3,9 +3,9 @@
 
 Abrir terminal
 - Para subir cambios:
-	git add . 
-	git commit -m "test" 
-	git push 
+git add . 
+git commit -m "." 
+git push 
 - Para bajar cambios:
 	git pull
 
