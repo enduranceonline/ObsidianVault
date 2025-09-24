@@ -333,15 +333,15 @@ Python ofrece varios tipos de operadores; véamos cada categoría con ejemplos.
 
 ### 6.1 Aritméticos
 
-|Operador|Descripción|Ejemplo|
-|---|---|---|
-|`+`|Suma|`3 + 4 # 7`|
-|`-`|Resta|`7 - 2 # 5`|
-|`*`|Multiplicación|`5 * 6 # 30`|
-|`/`|División (float)|`7 / 2 # 3.5`|
-|`//`|División entera|`7 // 2 # 3`|
-|`%`|Módulo|`7 % 2 # 1`|
-|`**`|Potencia|`2 ** 3 # 8`|
+| Operador | Descripción      | Ejemplo       |
+| -------- | ---------------- | ------------- |
+| `+`      | Suma             | `3 + 4 # 7`   |
+| `-`      | Resta            | `7 - 2 # 5`   |
+| `*`      | Multiplicación   | `5 * 6 # 30`  |
+| `/`      | División (float) | `7 / 2 # 3.5` |
+| `//`     | División entera  | `7 // 2 # 3`  |
+| `%`      | Módulo           | `7 % 2 # 1`   |
+| `**`     | Potencia         | `2 ** 3 # 8`  |
 
 ### 6.2 Comparación
 
@@ -356,20 +356,18 @@ Python ofrece varios tipos de operadores; véamos cada categoría con ejemplos.
 
 - `and`, `or`, `not`
 
-    ```python
-    (5 > 2) and (3 < 4)   # True
-    not (5 == 2)          # True
-    ```
-
+```python
+(5 > 2) and (3 < 4)   # True
+ not (5 == 2)          # True
+```
 
 ### 6.4 Mixtos y coerción
 
 - Mezclar `int` y `float` produce `float`
 
-    ```python
-    3 + 2.0  # 5.0
-    ```
-
+```python
+ 3 + 2.0  # 5.0
+```
 
 ---
 
@@ -623,7 +621,6 @@ Diseña un programa que:
     - Pregunte “¿Aparcar (A), Salir (S) o Estado (E)?”
         
     - Llame al método adecuado y muestre resultados.
-        
 
 > **Sugerencia:** Usa un `dict` en `Parking` para mapear matrículas → plazas y una `list` o `set` para gestionar plazas libres.
 
