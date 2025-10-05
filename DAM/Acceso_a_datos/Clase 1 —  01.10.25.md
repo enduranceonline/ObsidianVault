@@ -1,10 +1,11 @@
 #basesdedatos 
 
 ---
+ 📘 Acceso a Datos
 
- Clase 1 - 01/10/25
+ 🗓 Clase 1 — 01/10/2025
 
----
+🎯 Tema: Presentación de la asignatura y apuntes del tema 1
 
 # 📘 Tema 1 - Gestión de Ficheros (Acceso a Datos)
 
@@ -133,7 +134,6 @@ File archivo = new File("carpeta" + File.separator + "ejemplo.txt");
 - En Windows → `"carpeta\\ejemplo.txt"`
     
 - En Linux/Mac → `"carpeta/ejemplo.txt"`
-    
 
 De esta forma el programa es **portable** y no depende del sistema operativo.
 
@@ -518,4 +518,6 @@ Con la API de Java se pueden realizar operaciones como:
     - **Secuencial** → lectura lineal.
         
     - **Aleatorio** → acceso directo con `RandomAccessFile`.
+
+---
 

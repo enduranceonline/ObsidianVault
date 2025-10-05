@@ -1,10 +1,11 @@
 #virtualbox #ciscopackettracer 
 
 ---
+ 📘 Ciberseguridad
 
-02/10/25
+ 🗓 Clase 1 — 02/10/2025
 
----
+🎯 Tema: Presentación de la asignatura e instalación del Virtualbox y configuracion de VM Windows Server
 
 # Clase 1 - Ciberseguridad DAM
 
