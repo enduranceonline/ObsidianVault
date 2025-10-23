@@ -7,6 +7,7 @@
 
 🎯 Tema: Presentación de la asignatura y apuntes del tema 1
 
+---
 # 📘 Tema 1 - Gestión de Ficheros (Acceso a Datos)
 
 ## 1. Concepto de fichero

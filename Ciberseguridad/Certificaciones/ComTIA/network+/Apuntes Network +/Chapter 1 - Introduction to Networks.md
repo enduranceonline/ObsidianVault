@@ -1,9 +1,6 @@
 #StudyGuideN10-009 #network
 
-# Chapter 1 - Introduction to Networks  
-**Domain 1.0: Networking Concepts**  
-**Objective 1.6:** Compare and contrast network topologies, architectures, and types  
-
+---
 ![[Pasted image 20251009120858.png]]
 
 ---
