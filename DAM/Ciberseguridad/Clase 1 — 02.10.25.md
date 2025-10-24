@@ -392,3 +392,4 @@ El administrador de dominio puede crear o eliminar cuentas de usuario de toda la
 - Objetivo: **ver todas las herramientas de seguridad** que ofrece un entorno empresarial real.
 
 ---
+✅ Final clase 1

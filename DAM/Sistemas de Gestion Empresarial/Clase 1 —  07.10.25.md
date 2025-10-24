@@ -1,4 +1,5 @@
 # 📘 Clase 1 — Sistemas de Gestión Empresarial  
+
 **Fecha:** 07/10/2025  
 **Profesor:** José Luis Sánchez Montejo  
 **Tema:** Introducción a la gestión empresarial y visión real de las PYMES  
