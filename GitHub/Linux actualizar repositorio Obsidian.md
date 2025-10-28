@@ -15,6 +15,120 @@ git push
 
 # 🔑 Cheatsheet Git + SSH para Obsidian
 
+28.10.2025
+# Cambios realizados 
+
+- Unificación de ramas: `backup/2025-09-16` → `main` (rename y push forzado).
+    
+- Eliminación de rama antigua en remoto.
+    
+- Repositorio cambiado a **público**.
+    
+- Protección de rama `main`:
+    
+    - Block force pushes.
+        
+    - Restrict deletions.
+        
+    - (Sin PR obligatorio para mantener push directo).
+        
+- Commits **firmados por SSH**:
+    
+    - `gpg.format=ssh`
+        
+    - `user.signingkey=~/.ssh/id_ed25519.pub`
+        
+    - `commit.gpgsign=true`
+        
+    - `gpg.ssh.allowedSignersFile=~/.config/git/allowed_signers`
+        
+- Upstream corregido: `main` → `origin/main`.
+    
+- Limpieza de archivo de prueba `.gitkeep`.
+
+# Configuración global aplicada (una sola vez)
+
+```bash
+git config --global gpg.format ssh
+git config --global user.signingkey ~/.ssh/id_ed25519.pub
+git config --global commit.gpgsign true
+git config --global pull.rebase true
+git config --global rebase.autoStash true
+git config --global push.autoSetupRemote true
+mkdir -p ~/.config/git
+echo "$(git config user.email) $(cat ~/.ssh/id_ed25519.pub)" > ~/.config/git/allowed_signers
+git config --global gpg.ssh.allowedSignersFile ~/.config/git/allowed_signers
+```
+
+# Flujo de trabajo desde ahora
+
+```bash
+# 1) Iniciar sesión SSH (cada nueva terminal)
+eval $(ssh-agent -s)
+ssh-add ~/.ssh/id_ed25519
+
+# 2) Trabajo diario en main
+git status
+git add -A
+git commit -m "mensaje"      # firmado automáticamente (SSH)
+git pull --rebase
+git push
+```
+
+DUDAS:
+
+1️⃣ **`git add -A` vs `git add .`**
+
+- `git add .` añade archivos nuevos y modificados, **pero no detecta eliminaciones** (archivos borrados no se reflejan).
+    
+- `git add -A` añade **todo**: nuevos, modificados y eliminados.  
+    Por eso se usa `-A` en flujos completos o de sincronización. Es más seguro y coherente.
+
+2️⃣ **La línea `# firmado automáticamente (SSH)`**  
+No es un comando. Es solo un comentario informativo.  
+
+El commit se firma **en el momento de ejecutar `git commit -m "mensaje"`**, gracias a la configuración:
+
+```bash
+git config --global commit.gpgsign true
+git config --global gpg.format ssh
+git config --global user.signingkey ~/.ssh/id_ed25519.pub
+```
+
+Así, cada commit se firma automáticamente al crearlo, sin pasos extra.  
+Luego simplemente haces `git pull --rebase` y `git push` como siempre.
+# Verificación rápida
+
+- Local:
+    
+```bash
+git log --show-signature -1    # Debe mostrar: Good "git" signature ...
+```
+    
+- GitHub: el commit debe salir **Verified**.
+
+# Si ves rechazo por “signed commits”
+
+- Asegura agente y clave:
+    
+```bash
+ssh-add -l                     # Debe listar id_ed25519
+```
+    
+- Re-firma el último commit:
+    
+```bash
+git commit --amend -S --no-edit
+git push --force-with-lease
+```
+
+# Notas operativas
+
+- Las reglas de rama evitan borrado y force push en `main`. El push normal sigue permitido.
+    
+- Si cambias de equipo o clave, repite la sección de **configuración global**.
+
+
 ## 🟦 Windows (Git Bash o PowerShell)
 
 ```bash
