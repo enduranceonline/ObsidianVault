@@ -1,11 +1,15 @@
 #androidstudio
 
 ---
- 📘 Programación Multimedia y Dispositivos Móviles
+📘 _Profesor: Joan Salvador Gordi Ortega_
+
+📘 Programación Multimedia y Dispositivos Móviles
 
  🗓 Clase 1 — 03/10/2025
 
 🎯 Tema: Presentación de la asignatura e instalación del entorno de desarrollo
+
+---
 
 ### 🧑‍🏫 Introducción del profesor
 

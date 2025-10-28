@@ -7,6 +7,8 @@
 
 🎯 Tema: Presentación de la asignatura e instalación del Virtualbox y configuracion de VM Windows Server
 
+---
+
 # Clase 1 - Ciberseguridad DAM
 
 📅 **Tema:** Instalación y configuración de Windows Server 2019 en VirtualBox + introducción a Cisco Packet Tracer

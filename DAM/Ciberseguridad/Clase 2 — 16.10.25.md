@@ -1,6 +1,13 @@
 #virtualbox #ciscopackettracer #activedirectory #windowserver
 
 ---
+ 📘 Ciberseguridad
+
+ 🗓 Clase 2 — 16/10/2025
+
+🎯 Tema: Configuración de Active Directory y Red de Dominio
+
+---
 
 # 🧠 Configuración de Active Directory y Red de Dominio
 

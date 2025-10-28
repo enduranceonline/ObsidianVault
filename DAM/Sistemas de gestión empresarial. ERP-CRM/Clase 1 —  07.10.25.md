@@ -1,8 +1,17 @@
-# 📘 Clase 1 — Sistemas de Gestión Empresarial  
+#ERP
 
-**Fecha:** 07/10/2025  
-**Profesor:** José Luis Sánchez Montejo  
-**Tema:** Introducción a la gestión empresarial y visión real de las PYMES  
+---
+
+📘 _Profesor: José Luis Sánchez Montejo 
+
+📘 Programación Multimedia y Dispositivos Móviles
+
+ 🗓 Clase 1 — 07/10/2025 
+
+🎯 Tema:  Introducción a la gestión empresarial y visión real de las PYMES  
+
+---
+# Sistemas de Gestión Empresarial  
 
 ---
 
