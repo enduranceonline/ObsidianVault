@@ -63,16 +63,19 @@ git config --global gpg.ssh.allowedSignersFile ~/.config/git/allowed_signers
 # Flujo de trabajo desde ahora
 
 ```bash
-# 1) Iniciar sesión SSH (cada nueva terminal)
+# 1️⃣ Iniciar sesión SSH (cada nueva terminal)
 eval $(ssh-agent -s)
 ssh-add ~/.ssh/id_ed25519
 
-# 2) Trabajo diario en main
+# 2️⃣ Flujo diario
 git status
 git add -A
-git commit -m "mensaje"      # firmado automáticamente (SSH)
+git commit -m "mensaje"     # firmado automáticamente (SSH)
 git pull --rebase
 git push
+
+# 3️⃣ Verificar firma si lo deseas
+git log --show-signature -1
 ```
 
 DUDAS:
