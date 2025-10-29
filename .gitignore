@@ -22,3 +22,11 @@ Desktop.ini
 .obsidian/appearance.json
 .obsidian/cache/
 .obsidian/plugins/**/data.json
+
+# Contenido privado
+Certificaciones/
+Certificaciones/Network+/
+
+# Contenido privado (certificaciones y material con derechos)
+Ciberseguridad/Certificaciones/
+Ciberseguridad/Certificaciones/ComTIA/network+/
