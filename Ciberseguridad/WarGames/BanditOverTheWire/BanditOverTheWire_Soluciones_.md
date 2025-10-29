@@ -1,5 +1,6 @@
 #labs #linux #ejercicio
 # 🛠️ Bandit OverTheWire – Resolución detallada (Niveles 0 → 34)
+
 > **Actualizado:** 2025-06-02
 
 Este documento es una guía **paso a paso** para las personas que se inician en ciberseguridad.  
