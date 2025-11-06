@@ -7,6 +7,8 @@
 
 🎯 Tema: Presentación de la Asignatura y Introducción al concepto de interfaz
 
+👩‍🏫 Profesora: Sara Gonzalo 
+
 ---
 
 # Presentación de la Asignatura
