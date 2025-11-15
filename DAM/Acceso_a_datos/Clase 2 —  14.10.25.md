@@ -1,10 +1,10 @@
 #IntelliJIDEA #JAVA 
 
 ---
- 📘 Acceso a Datos
 
- 🗓 Clase 2— 14/10/2025
-
+👨‍🏫  Profesor: Álvaro García Gutierrez
+📘 Acceso a Datos
+🗓 Clase 2— 14/10/2025
 🎯 Tema: Creación, gestión y eliminación de directorios y ficheros en Java
 
 ---
@@ -191,12 +191,12 @@ if (!dirNuevo.exists()) {
 }
 try {
     if (fichero2.createNewFile()) {
-        System.out.println("Fichero creado: " + fichero2.getAbsolutePath());
+        System.out.println("Fichero                creado: " +                                fichero2.getAbsolutePath());
     } else {
-        System.out.println("El fichero ya existía: " + fichero2.getAbsolutePath());
+        System.out.println("El fichero ya          existía: " +                               fichero2.getAbsolutePath());
     }
 } catch (IOException e) {
-    System.out.println("ERROR al crear el fichero: " + e.getMessage());
+    System.out.println("ERROR al crear el      fichero: " + e.getMessage());
 }
 ```
 

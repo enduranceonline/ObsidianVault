@@ -1,13 +1,11 @@
 
+
 ---
 # 🧠  Programación de Servicios y Procesos
 
- Profesor: Jose Antonio Martín
- 
- UNIDAD: Programación Multiproceso
-
+ 👨‍🏫  Profesor: Jose Antonio Martín
+ 📘 UNIDAD: Programación Multiproceso
  🗓 Clase 1 — 15/10/2025
-
 🎯 Tema: Tipos de archivos ejecutables y conceptos base
 
 ---

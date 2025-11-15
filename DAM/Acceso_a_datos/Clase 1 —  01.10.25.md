@@ -1,10 +1,10 @@
 #basesdedatos 
 
 ---
- 📘 Acceso a Datos
-
- 🗓 Clase 1 — 01/10/2025
-
+ 
+👨‍🏫  Profesor: Álvaro García Gutierrez
+📘 Acceso a Datos
+🗓 Clase 1 — 01/10/2025
 🎯 Tema: Presentación de la asignatura y apuntes del tema 1
 
 ---

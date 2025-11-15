@@ -2,15 +2,13 @@
 
 ---
 
-📘 _Profesor: José Luis Sánchez Montejo 
-
+👨‍🏫 _Profesor: José Luis Sánchez Montejo 
 📘 Programación Multimedia y Dispositivos Móviles
-
- 🗓 Clase 1 — 07/10/2025 
-
+🗓 Clase 1 — 07/10/2025 
 🎯 Tema:  Introducción a la gestión empresarial y visión real de las PYMES  
 
 ---
+
 # Sistemas de Gestión Empresarial  
 
 ---

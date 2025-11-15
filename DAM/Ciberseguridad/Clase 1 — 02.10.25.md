@@ -1,10 +1,10 @@
 #virtualbox #ciscopackettracer 
 
 ---
- 📘 Ciberseguridad
 
- 🗓 Clase 1 — 02/10/2025
-
+👨‍🏫  Profesor: Carlos Quintana
+📘 Unidad: Ciberseguridad  
+🗓 Clase 1— 02/10/2025
 🎯 Tema: Presentación de la asignatura e instalación del Virtualbox y configuracion de VM Windows Server
 
 ---
@@ -53,19 +53,19 @@ mindmap
         Verifica identidad del usuario
         Ej: Login con usuario y contraseña
       Autorización
-        Define qué recursos puede usar el usuario
-        Ej: Acceso a carpetas, impresoras, aplicaciones
+        Define qué recursos puede usar el          usuario
+        Ej: Acceso a carpetas, impresoras,         aplicaciones
       Contabilidad
         Registra acciones del usuario
         Ej: Logs de acceso, auditorías
     Cortafuegos
       Físicos
-        Dispositivo de hardware (Cisco ASA, Firepower)
+        Dispositivo de hardware (Cisco             ASA, Firepower)
         Difíciles de penetrar
         Usados en empresas
       Lógicos
-        Software integrado en sistemas operativos
-        Ej: Windows Defender Firewall, iptables en Linux
+        Software integrado en sistemas             operativos
+        Ej: Windows Defender Firewall,             iptables en Linux
 ```
 
 ---
