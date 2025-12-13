@@ -316,7 +316,8 @@ Antes de añadir seguridad, ya habíamos montado una red inalámbrica funcional.
 Vimos cómo el **Server-PT** se configura para actuar como servidor AAA —es decir, como la “base de datos de usuarios” que autoriza o deniega el acceso a la WiFi—. Al asignarle una IP estática dentro de la red (`192.168.1.2`) lo fijamos como un recurso permanente, accesible tanto por el router como por los clientes.
 
 ![[Pasted image 20251111124840.png]]
-### Esto introduce dos ideas fundamentales:
+
+ Esto introduce dos ideas fundamentales:
 
 - El **router deja de autenticar por sí mismo**, pasa a delegar en el servidor.
     
@@ -341,6 +342,37 @@ Y la configuración del router como “cliente RADIUS”:
 Esto construye una relación de confianza entre el router y el servidor, similar a la que hay entre un Access Point corporativo y un servidor de autenticación (por ejemplo, Active Directory + RADIUS).
 
 Con este contexto, pasamos al proceso de autenticación y seguridad.
+
+### 🔧 Vinculación del router con el servidor AAA (RADIUS)
+
+Tras crear los usuarios en el servidor AAA y activar el servicio, es necesario **registrar el router WRT300N como “cliente RADIUS”**. Sin esta vinculación, el router no sabrá a qué servidor enviar las peticiones de autenticación WPA2-Enterprise.
+#### ⚙️ Pasos en el router
+
+**Router → GUI → Security → Wireless → RADIUS**
+
+Completar con:
+
+- **Server IP Address:** `192.168.1.2`
+    
+- **Port Number:** `1812`
+    
+- **Shared Secret:** `123456789`
+    
+- **Status:** Enabled
+
+![[Pasted image 20251120115734.png]]
+
+Este proceso establece la relación de confianza router ↔ servidor y activa la autenticación centralizada (**AAA**). A partir de aquí, cada conexión WiFi enviará un challenge al servidor para verificar credenciales.
+
+#### Por qué es necesario
+
+- El router deja de usar clave PSK.
+    
+- Todas las conexiones WiFi pasan por el servidor AAA.
+    
+- Cada usuario se valida individualmente (ana, pedro…).
+    
+- El router se convierte en un **Access Point empresarial**, no en un router doméstico.
 
 ---
 
@@ -509,377 +541,140 @@ Si el sensor no puede comunicarse con el cerebro, los actuadores nunca responder
 
 ## 1️⃣3️⃣ Activar IoT Server en AAA-DHCP
 
-Hasta este punto el servidor solo cumple dos funciones:
+Hasta este momento, el servidor había asumido únicamente dos grandes responsabilidades dentro de la red: autenticar usuarios mediante AAA (es decir, actuar como un servidor RADIUS que permite o deniega el acceso a la WiFi) y repartir direcciones IP a todos los dispositivos a través del servicio DHCP. Gracias a esto, la red ya tenía orden, autenticación y una asignación de direcciones coherente. Sin embargo, todos los dispositivos IoT —las puertas, ventanas, cámaras, el garaje e incluso la lectora RFID—, aunque ya disponían de una dirección IP y podían comunicarse a través de la red, seguían siendo elementos aislados, incapaces de coordinarse entre sí o de reaccionar a condiciones concretas. Faltaba un componente clave: un cerebro.
 
-- **AAA (RADIUS)**: autenticar usuarios que se conectan a la WiFi.
-    
-- **DHCP**: entregar direcciones IP a clientes e IoT.
+Ese “cerebro” es el **IoT Server**, un módulo adicional que se activa dentro del propio servidor AAA-DHCP. Cuando entra en funcionamiento, el servidor deja de ser un mero gestor de usuarios y direcciones IP para convertirse en una plataforma capaz de recibir eventos, registrar dispositivos, almacenar estados y ejecutar reglas que reaccionen ante lo que ocurre en la red.
 
-Pero aún **no existe ningún mecanismo central para gestionar los dispositivos IoT**.  
-Cada IoT está conectado a la WiFi, tiene su IP y puede recibir órdenes, pero no hay un “cerebro” que controle el conjunto.
+En arquitecturas reales, este componente equivale a lo que haría Home Assistant en una casa inteligente, un broker MQTT en un despliegue moderno de IoT, o un servidor SCADA en un entorno industrial. Packet Tracer lo simplifica, pero su propósito es el mismo: convertir una red de dispositivos sueltos en un sistema coordinado capaz de comportarse inteligentemente.
 
-Ese “cerebro” es el **IoT Server**, un módulo adicional dentro del propio servidor que:
+Para activarlo, basta con entrar en el servidor desde la sección **Services** y encender el apartado IoT.
 
-- registra los dispositivos IoT
-    
-- mantiene una base de datos de estados (encendido/apagado, bloqueado/desbloqueado, etc.)
-    
-- permite aplicar reglas automáticas
-    
-- coordina acciones entre dispositivos
+![[Pasted image 20251120120747.png]]
 
-En un entorno real esto equivaldría a:
+En el momento en que se activa este módulo, el servidor empieza a escuchar las peticiones de registro de cualquier dispositivo IoT que quiera asociarse a él. Si el servicio permanece desactivado, ningún dispositivo podrá registrarse ni aparecer en el IoT Monitor, y todas las reglas automáticas quedarían en un estado inservible. Activarlo es equivalente a encender un sistema operativo domótico que, de golpe, convierte la red en una plataforma automatizada.
 
-- un servidor MQTT
-    
-- Home Assistant
-    
-- un controlador IoT industrial
-    
-- un backend de gestión domótica
-
-En Cisco Packet Tracer este módulo se activa manualmente porque no viene activo por defecto.
-
----
-
-### 🔹 Paso 1: activar el servicio IoT
-
-**Ruta:**  
-`Server-PT > Services > IoT`
-
-- **IoT Service: On**
-
-Con esto habilitamos el “motor” que permite al servidor comunicarse con cada dispositivo IoT de la red.
-
-Si no está activado, cualquier intento de conectar los dispositivos al servidor IoT fallará.
-
----
-
-### 🔹 Paso 2: abrir la interfaz de gestión IoT
-
-**Ruta:**  
-`Desktop > IoT Monitor`
-
-El IoT Monitor es la ventana de administración.  
-Al abrirlo, el servidor nos pide:
-
-- **Dirección del servidor IoT** → `192.168.1.2`
-    
-- **Usuario y contraseña**
-
-Estos son credenciales internos para gestionar todo el sistema IoT, **no son los usuarios WiFi del AAA**, no son ana/pedro.
-
-Aquí usamos por defecto:
-
-- **User:** admin
-    
-- **Password:** admin
+Una vez habilitado el servicio, la siguiente parada se encuentra en el escritorio del servidor, concretamente en la aplicación llamada **IoT Monitor**, que actúa como consola de control del ecosistema IoT.
 
 ![[Pasted image 20251111130323.png]]
 
-Es el acceso inicial del administrador del sistema.  
-Equivale a entrar al “panel de control” de un sistema IoT.
+El IoT Monitor solicita que introduzcamos la dirección del servidor IoT (en este caso, el propio servidor local con IP **192.168.1.2**) y un usuario con privilegios administrativos. Estos usuarios **no tienen nada que ver** con los usuarios que se conectan a la WiFi mediante AAA (como ana o pedro). Son credenciales internas del sistema IoT y funcionan de forma totalmente independiente. Inicialmente, como ocurre en muchos dispositivos reales, Packet Tracer proporciona un usuario por defecto: **admin / admin**.
+
+Tras iniciar sesión, la interfaz ya permite crear usuarios administradores reales. En el escenario se crea uno llamado **manuel**, con contraseña **1234**, que será la cuenta utilizada por todos los dispositivos IoT para registrarse y, más adelante, para que el administrador humano gestione reglas, revise estados o añada nuevos elementos. Este paso recuerda a las buenas prácticas reales: nunca se debe operar un sistema con la cuenta por defecto, ya que comprometería toda la seguridad del sistema.
+
+Desde este punto es importante entender que ahora existen claramente tres niveles de identidad dentro de la red. Por un lado, están los usuarios que se autentican en la WiFi mediante AAA, como ana o pedro. Por otro, el administrador del ecosistema IoT (manuel), encargado de vincular dispositivos y definir reglas. Y, como cuenta de fondo, el usuario inicial por defecto admin/admin, equivalente a una llave maestra que solo se debe usar para la puesta en marcha. Esta separación ayuda a que cada capa de la red tenga su propio conjunto de permisos, como ocurre en empresas reales.
 
 ---
 
-### 🔹 Paso 3: crear un administrador IoT real
+## 1️⃣4️⃣ Vincular los dispositivos IoT al servidor IoT
 
-Tras autenticarnos como admin-admin, el sistema permite crear un nuevo usuario.
+Llegados a este punto, el servidor ya está preparado para recibir y gestionar dispositivos IoT, pero ellos aún no saben que existe un controlador central. A diferencia de otros sistemas “plug and play”, en IoT casi nunca ocurre un emparejamiento automático. Cada dispositivo debe declarar explícitamente a qué servidor quiere reportar. Es un proceso similar al de emparejar un sensor Zigbee con un hub doméstico, o registrar un nuevo dispositivo industrial dentro de un SCADA.
 
-Creamos:
+Cada actuador y sensor del escenario —la ventana, el garaje, la puerta, la cámara y especialmente la **LECTORA RFID**— debe configurarse desde la pestaña **Config → IoT Server → Remote Server**, indicando tres datos esenciales:
 
-- **manuel / 1234**
-
-Este es el usuario que tendrá permisos para:
-
-- añadir dispositivos
+- la dirección del servidor IoT,
     
-- modificar estados
+- el usuario administrador (`manuel`),
     
-- crear reglas
+- y la contraseña (`1234`).
     
-- controlar remotamente el sistema
 
-Actúa como **usuario administrador IoT** de la infraestructura.
+Solo después de introducir estos datos y pulsar **Connect**, el dispositivo queda oficialmente registrado en la plataforma.
 
-En un entorno corporativo esto sería el responsable de domótica, automatización industrial, control de accesos o sistemas SCADA.
+A nivel interno, ese clic desencadena un intercambio muy simple, pero conceptualmente profundo: el dispositivo envía una solicitud al servidor IoT, el servidor valida las credenciales, agrega el dispositivo a su base de datos y confirma el registro cambiando el botón a **Refresh**. Desde ese momento, el dispositivo se considera online, aparece en el IoT Monitor y puede participar en reglas.
+
+![[Pasted image 20251111125844.png]]
+
+Si este proceso no se hace, el dispositivo, aunque conectado a la WiFi y con una IP válida, queda huérfano: no puede recibir órdenes, no aparece en el panel de control y no participa en ninguna lógica de automatización.
+
+El caso más importante es el de la **LECTORA RFID**, ya que ella es la encargada de generar los eventos que darán vida a todo el sistema. La lectora no es un dispositivo pasivo: detecta el ID de la tarjeta, lo envía al servidor y desencadena las acciones programadas. Si no estuviera registrada, el servidor no recibiría ningún evento, y el sistema entero —por muchos IoT que tuviera conectados— quedaría completamente inerte.
+
+Por su parte, la tarjeta RFID (IoT4) funciona de manera opuesta: no se registra, no se vincula y no tiene IP. Es un objeto puramente pasivo que contiene un identificador, como un llavero NFC o una tarjeta magnética real. Su única función es ser presentada ante la lectora RFID, que es quien se comunica con el servidor.
+
+Este modelo de comunicación refleja muy bien cómo se construyen las arquitecturas IoT modernas: los dispositivos hablan con un servidor central, los servidores contienen la lógica y las tarjetas o sensores físicos actúan como desencadenantes de eventos.
 
 ---
 
-### Concepto clave
+## 1️⃣5️⃣ La tarjeta RFID: un identificador, no un dispositivo de red
 
-Aquí se separan **tres identidades distintas**:
+La tarjeta RFID es un elemento especialmente interesante porque, aunque Packet Tracer lo presenta como un dispositivo IoT, en realidad se parece mucho más a un objeto del mundo físico: es simplemente un portador de un valor de identificación. En este caso, el valor configurado es **Card ID = 1001**. No tiene dirección IP, no se comunica con el servidor y ni siquiera es capaz de generar eventos por sí sola. Es la lectora la que interpreta ese valor y decide si debe enviarlo al servidor IoT.
 
-1. **Usuario WiFi** → ana/pedro
-    
-2. **Administrador IoT interno** → manuel
-    
-3. **Admin inicial del sistema** → admin/admin
-
-Esto imita la separación de roles que existe en seguridad real:
-
-- usuarios finales
-    
-- administradores de red
-    
-- administradores de sistemas
-
-Cada uno con permisos distintos y funciones distintas.
-
----
-
-## 1️⃣4️⃣ Vincular dispositivos IoT al servidor IoT
-
-Hasta este punto hemos habilitado el servidor IoT, hemos creado el usuario administrador y hemos activado la infraestructura que permite gestionar dispositivos.  
-Pero todo esto no sirve de nada hasta que **cada dispositivo IoT declara explícitamente a qué servidor debe reportar**.
-
-En otras palabras:
-
-- Los dispositivos IoT no “se conectan solos” al servidor.
-    
-- Deben ser configurados uno por uno.
-    
-- Deben usar credenciales válidas del administrador IoT.
-
-Esto es intencional y refleja el comportamiento **real** de dispositivos IoT profesionales.  
-Cada sensor/actuador debe ser registrado en una plataforma central antes de poder ser controlado.
-
-Si no se realiza esta vinculación, el servidor no sabe:
-
-- qué dispositivos existen
-    
-- qué estados tienen
-    
-- qué acciones puede ejecutar
-    
-- qué reglas aplicar
-
----
-
-### 🔹 Paso por paso en Packet Tracer
-
-En cada dispositivo IoT:
-
-**Config > IoT Server > Remote Server**
-
-Completar:
-
-- **Server Address:** `192.168.1.2`
-    
-- **User Name:** `manuel`
-    
-- **Password:** `1234`
-    
-- Pulsar **Connect**
-
----
-
-### 🔹 ¿Qué ocurre internamente al pulsar "Connect"?
-
-Técnicamente pasa esto:
-
-1. El dispositivo envía una solicitud al servidor IoT.
-    
-2. El servidor valida credenciales (manuel / 1234).
-    
-3. Si son correctas, el servidor registra el dispositivo en la lista interna.
-    
-4. El dispositivo pasa a estado “online”.
-    
-5. El botón cambia a **Refresh**, indicando vinculación exitosa.
-    
-6. A partir de aquí el dispositivo es controlable desde el servidor (encendido, apagado, apertura, bloqueo, etc).
-   ![[Pasted image 20251111125844.png]]
-
-Esto es igual que cuando:
-
-- un sensor Zigbee se empareja con un hub
-    
-- un dispositivo industrial se registra en un SCADA
-    
-- un sensor se conecta a un broker MQTT
-
----
-
-### 🔹 Repetir el proceso en cada IoT
-
-Debemos vincular cada uno de los siguientes:
-
-- garaje
-    
-- ventana
-    
-- puerta
-    
-- camara
-    
-- LECTORA (RFID Reader)
-
-Cada uno debe aparecer “Online” en el panel del IoT Monitor después de conectarlo.
-
----
-
-### 🔹 ¿Por qué también la LECTORA (RFID Reader)?
-
-Porque la LECTORA no es un dispositivo pasivo.  
-Actúa como **sensor de eventos**.  
-Debe comunicar al servidor:
-
-- Card ID detectado
-    
-- Estado (Waiting, Valid, Invalid, etc)
-    
-- Cambios en tiempo real
-
-El servidor usa estos eventos para activar reglas.  
-Si la lectora no estuviera vinculada, nunca enviaría el evento “Card ID = 1001” al servidor.
-
----
-
-### 🔹 ¿Por qué no se vincula la tarjeta?
-
-La tarjeta RFID (IoT4) es un **elemento estático con un valor ID**.  
-No tiene conectividad ni IP.  
-Solo se “lee” desde la LECTORA.
-
----
-
-### 🔹 Concepto de arquitectura IoT que se refleja aquí
-
-Lo que estamos construyendo es:
-
-`Dispositivos IoT  →  Servidor IoT  →  Reglas/Acciones  →  Estado final`
-
-En un flujo real sería:
-
-1. Dispositivo produce evento.
-    
-2. Servidor recibe evento.
-    
-3. Servidor evalúa condiciones.
-    
-4. Servidor ejecuta acciones en otros dispositivos.
-    
-5. Dispositivos cambian de estado.
-
-Esto es la base de:
-
-- Domótica
-    
-- Automatización industrial
-    
-- Control de accesos
-    
-- Sistemas inteligentes
-
----
-
-### Resumen conceptual claro
-
-❗ No basta con activar el servidor IoT.
-
-✅ Hay que decirle a cada dispositivo “a quién debe obedecer”.
-
-✅ Solo entonces el servidor puede monitorizar y controlar el ecosistema.
-
-✅ Y solo entonces las reglas automáticas tienen efecto.
-
----
-
-## 1️⃣5️⃣ Configurar tarjeta RFID
-
-La tarjeta RFID (IoT4) no es un dispositivo conectado a la red. No tiene IP ni interfaz de comunicación. Es simplemente un **identificador físico** con un valor numérico programado:
-
-- **Card ID = 1001**
-
-Su único propósito es ser detectada por la **LECTORA** cuando se pasa por delante. La tarjeta actúa como:
-
-- un “token de acceso”
-    
-- un disparador de eventos
-    
-- una clave vinculada a reglas de automatización
-
-No se configura nada más porque no participa en la red. Su función es proporcionar el dato que activará las acciones en el servidor IoT.
+Por ello, la tarjeta no requiere ningún tipo de configuración extra ni debe vincularse al servidor. Su propósito es puramente desencadenante: representa una credencial de acceso que se usará como condición en las reglas.
 
 ---
 
 ## 1️⃣6️⃣ Creación de reglas automáticas IoT
 
-El servidor aplica lógica condicional, una forma de “programación sin código”.
+Una vez que todos los dispositivos están registrados y conectados al servidor IoT, llega la parte más interesante del sistema: la automatización. Desde el IoT Monitor es posible crear reglas que siguen la lógica clásica de programación:
 
-### ✅ Regla 1 — abrir (cuando la tarjeta es válida)
+> **Si ocurre X, ejecuta Y.**
 
-**If Card ID = 1001 → Then activar todo**
+Packet Tracer lo simplifica en una interfaz donde se seleccionan condiciones (como la lectura de un `Card ID`) y se asignan acciones (como abrir una puerta o encender una luz).
 
-Esto imita un sistema de acceso inteligente tipo:
+La primera regla que se configura es la de **apertura**, diseñada para que el sistema reaccione cuando la tarjeta legítima, con ID 1001, es detectada por la lectora RFID. Esta regla indica: si la lectora detecta el `Card ID = 1001`, entonces activa todos los dispositivos relevantes. De esta manera, al pasar la tarjeta por la lectora, el garaje se abre, la ventana se levanta, la puerta se desbloquea y la cámara se enciende.
 
 ![[Pasted image 20251111130025.png]]
 
-- apertura de garaje
-    
-- subida de persianas
-    
-- encendido de luces
-    
-- apertura de puerta
+La segunda regla implementa la lógica contraria: siempre que el `Card ID` detectado **no** sea 1001 (es decir, cualquier otra tarjeta o ausencia de tarjeta), el sistema debe cerrarlo todo y devolver la red a un estado seguro. Esta regla representa la lógica de “estado seguro por defecto”, donde los dispositivos vuelven automáticamente a estar cerrados, apagados o bloqueados cuando no hay una credencial válida.
+
+![[Pasted image 20251111130043.png]]  
+![[Pasted image 20251120122109.png]]
+
+En muchos entornos reales, este tipo de reglas se utiliza para automatizar accesos, iluminar zonas solo cuando es necesario, o gestionar sistemas de seguridad que dependen del movimiento o la presencia de un usuario autorizado.
 
 ---
 
-### ✅ Regla 2 — cerrar (cuando la tarjeta no es válida o está fuera de alcance)
+## 1️⃣7️⃣ Prueba final del circuito IoT
 
-**If Card ID != 1001 → Then apagar todo**
-
-Esto simula:
-
-![[Pasted image 20251111130043.png]]
-
-- cierre automático
-    
-- bloqueo de puerta
-    
-- desactivación de sensores
-    
-- apagado de cámara
-    
-- desconexión del garaje
-
----
-
-## 1️⃣7️⃣ Prueba final
-
-Arrastrar la tarjeta sobre la lectora simula una **lectura RFID real**.
-
-Acciones:
-
-- LECTORA detecta ID
-    
-- Módulo IoT envía evento al servidor
-    
-- El servidor verifica la condición
-    
-- Ejecuta las acciones vinculadas en tiempo real
+Con el sistema completamente configurado, se realiza la prueba final. En Packet Tracer basta con arrastrar la tarjeta sobre la lectora RFID para simular la lectura del identificador. En ese momento, la lectora detecta el `Card ID`, lo envía al servidor IoT, y este evalúa todas las reglas activas. Si la tarjeta coincide, se activará la secuencia de apertura; si no, se ejecutará la secuencia de cierre.
 
 ![[Pasted image 20251111130114.png]]
 
-Es un flujo completo de autenticación → autorización → acción.
+Este flujo representa el ciclo real de un sistema de control de accesos basado en tarjetas: identificación → validación → acción → cambio de estado.
 
 ---
 
-# ✅ Estado final del sistema
+## Estado final del sistema
 
-- WiFi protegido con autenticación RADIUS
-    
-- Control central AAA con usuarios individuales
-    
-- DHCP unificado para toda la red
-    
-- Router convertido en un AP puro
-    
-- IoT monitorizado desde un único servidor
-    
-- Automatización RFID funcionando
+Al final de todo este proceso, la red deja de ser un simple conjunto de dispositivos conectados por WiFi. Lo que antes era una red doméstica básica —donde un router entrega IPs, cada aparato se conecta sin mayor control y la única seguridad real es una contraseña compartida— se transforma en una infraestructura mucho más parecida a la de un pequeño entorno profesional: ordenada, segmentada, inteligente y, sobre todo, segura.
 
-En conjunto, la red es más ordenada, más segura y más predecible, imitando arquitecturas de empresas modernas.
+El cambio más profundo se observa en la **forma en que se conectan y autentican los dispositivos**. La red WiFi deja de basarse en una única contraseña compartida para todos los miembros del hogar y empieza a utilizar un sistema de autenticación individual mediante **AAA (Authentication, Authorization and Accounting)**. Esto significa que cada persona, y si se quisiera, cada dispositivo, posee sus propias credenciales para entrar a la WiFi. No existe ya una “clave universal” que si alguien descubre, abre la puerta a toda la red. En su lugar, la autenticación se gestiona a través de un servidor RADIUS, que se convierte en la autoridad que decide quién puede entrar y bajo qué condiciones.
 
----
+Este enfoque tiene una implicación directa en la seguridad doméstica: si un vecino roba la contraseña del WiFi, si un invitado la comparte sin permiso o si un servicio del hogar queda comprometido, la solución no consiste en cambiar la contraseña a todo el mundo —dramático y molesto— sino en revocar ese usuario concreto, tal como se haría en una empresa. Además, cada intento de acceso queda registrado (la “A” de Accounting), lo cual permite detectar actividad inusual, intentos fallidos reiterados o comportamientos sospechosos.
+
+Por otro lado, la gestión de direcciones IP queda centralizada en el servidor mediante el servicio DHCP. Esto aporta orden, control y visibilidad. En una casa normal, el router asigna direcciones sin más, pero en este tipo de arquitectura el servidor documenta cada asignación, sabe qué dispositivo es quién y permite diagnósticos más precisos. Si un dispositivo empieza a comportarse de forma rara, es más sencillo localizarlo y actuar. A nivel doméstico, esto abre la puerta a monitorizar mejor la actividad de dispositivos IoT —especialmente los más problemáticos— como enchufes inteligentes baratos, bombillas WiFi desconocidas o cámaras de origen dudoso.
+
+El router, al adoptar el rol de **punto de acceso puro**, se convierte en un elemento mucho más simple y estable. Ya no gestiona la lógica de los accesos ni las reglas de red: solo transmite la señal WiFi. Esto reduce su superficie de ataque y lo vuelve menos vulnerable. Muchos fallos de seguridad en redes domésticas ocurren en routers con demasiadas funciones integradas. Delegar las funciones de autenticación y DHCP al servidor elimina una buena parte de estos riesgos.
+
+En cuanto a los dispositivos IoT, la diferencia es incluso más drástica. En una red doméstica típica, los dispositivos IoT se conectan directamente al router sin supervisión: una cámara entra, una bombilla se conecta, un enchufe recibe internet… pero nadie sabe si están enviando datos extraños, si se comunican con direcciones desconocidas o si alguien está accediendo desde fuera. Con un servidor IoT centralizado —como el que ofrece Packet Tracer en esta simulación— cada dispositivo queda registrado, autenticado y bajo supervisión continua. El servidor sabe qué dispositivos existen, qué estados tienen y qué acciones realizan, lo cual facilita detectar irregularidades y permite establecer reglas de comportamiento.
+
+Este modelo también habilita automatizaciones seguras basadas en condiciones del mundo real. En nuestro caso, una tarjeta RFID actúa como disparador y el servidor decide si debe abrir puertas, encender luces o activar cámaras. En un hogar real, esa misma arquitectura podría replicarse con:
+
+- un lector NFC o una app móvil como credencial,
+    
+- sensores de movimiento o presencia,
+    
+- cerraduras inteligentes,
+    
+- iluminación automatizada,
+    
+- detección de apertura o vibración.
+    
+
+El servidor conocería cada evento y aplicaría lo que esté programado, garantizando que todo ocurre bajo control y no de manera caótica. Además, al centralizar la lógica IoT se evita que cada aplicación de fabricante (TP-Link, Xiaomi, Philips, etc.) abra agujeros externos en la red para comunicarse con sus servidores propios, uno de los mayores riesgos en una casa moderna.
+
+En conjunto, lo que se ha construido es un modelo de red doméstica que se asemeja más a una pequeña infraestructura empresarial:
+
+- usuarios con credenciales únicas,
+    
+- autenticación robusta basada en AAA,
+    
+- asignación de direcciones coherente,
+    
+- control centralizado de dispositivos IoT,
+    
+- automatizaciones seguras,
+    
+- y una superficie de ataque notablemente menor.
+    
+
+Y lo más importante: esta arquitectura no solo da más control y seguridad, sino que permite escalar la red —añadiendo más dispositivos, automatizaciones o usuarios— sin que se vuelva caótica o vulnerable. En un mundo donde los hogares tienen cada vez más dispositivos conectados, integrar un servidor AAA y un controlador IoT deja de ser un lujo técnico y empieza a ser una forma realista de proteger un entorno doméstico moderno.

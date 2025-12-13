@@ -2,13 +2,10 @@
 
 ---
 
-📘 _Profesor: Joan Salvador Gordi Ortega_
-
+👨‍🏫 _Profesor: Joan Salvador Gordi Ortega_ 
 📘 Programación Multimedia y Dispositivos Móviles
-
- 🗓 Clase 2 — 17/10/2025
-
-🎯 Tema: **Repaso de la Programación Orientada a Objetos (POO) en Java**
+🗓 Clase 2 — 17/10/2025
+🎯 Tema: **Repaso de la Programación Orientada a Objetos (POO) en Java I**
 
 ---
 

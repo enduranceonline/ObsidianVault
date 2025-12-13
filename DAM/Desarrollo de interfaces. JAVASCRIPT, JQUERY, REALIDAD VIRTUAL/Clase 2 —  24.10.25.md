@@ -1,13 +1,11 @@
 #VSC 
 
 ---
- 📘 Desarrollo de interfaces. JAVASCRIPT, JQUERY, REALIDAD VIRTUAL
-
- 🗓 Clase 2 — 24/10/2025
-
-🎯 Tema: Primeros pasos con Javascript | Accesibilidad y Usabilidad 
 
 👩‍🏫 Profesora: Sara Gonzalo 
+📘 Desarrollo de interfaces. JAVASCRIPT, JQUERY, REALIDAD VIRTUAL
+🗓 Clase 2 — 24/10/2025
+🎯 Tema: Primeros pasos con Javascript | Accesibilidad y Usabilidad 
 
 ---
 
@@ -466,7 +464,7 @@ Benefician tanto a personas con discapacidad como a usuarios con limitaciones te
 
 ---
 
-## 8️⃣ Pautas WCAG (resumen ampliado)
+## 8️⃣ Pautas WCAG
 
 | Nº | Pauta | Explicación breve |
 |----|--------|------------------|

@@ -1,3 +1,12 @@
+
+---
+
+👨‍🏫 _Profesor: Víctor Aparicio_
+📘 Digitalización
+🗓 Clase 1 — 06/10/2025
+🎯 Tema: Presentación de la asignatura + Unidad1
+
+---
 # Unidad 1: Digitalización. Creación de Entornos IT y OT
 
 ---

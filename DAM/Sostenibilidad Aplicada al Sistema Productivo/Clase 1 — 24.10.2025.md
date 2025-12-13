@@ -1,15 +1,14 @@
 
 
 ---
-📘 _Profesor: Víctor Aparicio_
 
+👨‍🏫 _Profesor: Víctor Aparicio_
 📘 Sostenibilidad Aplicada al Sistema Productivo
-
- 🗓 Clase 1 — 24/10/2025
-
+🗓 Clase 1 — 24/10/2025
 🎯 Tema: Presentación de la asignatura + Tema 1 — La economía lineal y circular
 
 ---
+
 # Sostenibilidad Aplicada al Sistema Productivo
 
 **Evaluación:**
