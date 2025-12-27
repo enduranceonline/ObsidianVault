@@ -2,13 +2,13 @@
 
 ---
 
-# 🛠️ Metodología de Desarrollo
+# Metodología de Desarrollo
 
 ## Laboratorio SIEM
 
 ---
 
-## 🛠️ Introducción
+## Introducción
 
 En este apartado se describe la **metodología empleada para el desarrollo** del proyecto **Laboratorio SIEM**, detallando el enfoque seguido para planificar, implementar, validar y documentar el sistema.
 
@@ -23,7 +23,7 @@ La metodología adoptada se ha elegido con el objetivo de:
 
 ---
 
-## 🔄 Metodología adoptada
+## Metodología adoptada
 
 El desarrollo del proyecto se basa en una **metodología incremental**, inspirada en enfoques ágiles, adaptada a un entorno académico y de trabajo individual.
 
@@ -40,7 +40,7 @@ Este enfoque permite:
 
 ---
 
-## 📐 Fases del desarrollo
+## Fases del desarrollo
 
 El proyecto se desarrollará siguiendo las siguientes fases:
 
@@ -123,7 +123,7 @@ Finalmente, se lleva a cabo:
 
 ---
 
-## 🧪 Herramientas de apoyo
+## Herramientas de apoyo
 
 Para el desarrollo y la gestión del proyecto se utilizarán las siguientes herramientas:
 
@@ -138,7 +138,7 @@ Para el desarrollo y la gestión del proyecto se utilizarán las siguientes herr
 
 ---
 
-## 🧠 Gestión de cambios
+## Gestión de cambios
 
 Dado el carácter formativo del proyecto, se permitirá la **evolución controlada** de ciertos aspectos del sistema, siempre que:
 

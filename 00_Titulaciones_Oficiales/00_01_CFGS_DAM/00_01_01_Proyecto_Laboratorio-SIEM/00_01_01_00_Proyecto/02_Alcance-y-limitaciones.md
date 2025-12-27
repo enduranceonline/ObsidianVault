@@ -2,7 +2,7 @@
 
 ---
 
-# 📐 Alcance y Limitaciones del Proyecto
+# Alcance y Limitaciones del Proyecto
 
 ## Laboratorio SIEM
 

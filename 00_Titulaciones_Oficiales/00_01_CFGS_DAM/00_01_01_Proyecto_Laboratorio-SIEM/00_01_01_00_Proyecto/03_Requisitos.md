@@ -135,7 +135,7 @@ El sistema implementará **mecanismos básicos de seguridad**, adecuados al cont
 
 ---
 
-## 🧪 Requisitos de validación
+## Requisitos de validación
 
 El cumplimiento de los requisitos se verificará mediante:
 

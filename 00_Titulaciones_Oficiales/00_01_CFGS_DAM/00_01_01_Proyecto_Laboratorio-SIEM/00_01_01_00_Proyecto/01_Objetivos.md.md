@@ -2,7 +2,7 @@
 
 ---
 
-# 🎯 Objetivos del Proyecto
+# Objetivos del Proyecto
 
 ## Laboratorio SIEM
 
