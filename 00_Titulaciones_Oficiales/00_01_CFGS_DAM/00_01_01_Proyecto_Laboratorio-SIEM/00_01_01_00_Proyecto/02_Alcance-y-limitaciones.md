@@ -8,7 +8,7 @@
 
 ---
 
-## 📐 Alcance del proyecto
+## 1. Alcance del proyecto
 
 El proyecto **Laboratorio SIEM** se centra en el **desarrollo de una aplicación software** que simula el funcionamiento básico de un sistema SIEM, abordando de forma controlada las fases principales del tratamiento de eventos de seguridad.
 
@@ -73,7 +73,7 @@ El proyecto está orientado a:
 
 ---
 
-## 🚫 Limitaciones del proyecto
+## 2. Limitaciones del proyecto
 
 Con el fin de mantener un alcance adecuado y viable, el proyecto presenta las siguientes limitaciones claramente definidas:
 

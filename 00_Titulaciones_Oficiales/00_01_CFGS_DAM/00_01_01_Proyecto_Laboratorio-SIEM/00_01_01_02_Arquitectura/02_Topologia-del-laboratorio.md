@@ -5,6 +5,10 @@
 # Topología del laboratorio  
 ## Laboratorio SIEM
 
+## Figura 3. Topología del Laboratorio SIEM
+
+[[00_Titulaciones_Oficiales/00_01_CFGS_DAM/00_01_01_Proyecto_Laboratorio-SIEM/00_01_01_09_Anexos/Diagramas/03_Topologia_Lab.excalidraw.md|03_Topologia_Lab.excalidraw]]
+
 ---
 
 ## Introducción

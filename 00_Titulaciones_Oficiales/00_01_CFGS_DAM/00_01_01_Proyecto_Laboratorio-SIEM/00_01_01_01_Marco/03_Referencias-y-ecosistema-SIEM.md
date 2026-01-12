@@ -7,7 +7,7 @@
 
 ---
 
-## Introducción
+## 1. Introducción
 
 El presente apartado tiene como objetivo **situar el proyecto Laboratorio SIEM dentro del ecosistema tecnológico actual**, describiendo de forma general las soluciones SIEM existentes y los enfoques habituales utilizados en entornos profesionales y formativos.
 
@@ -15,7 +15,7 @@ Este análisis permite contextualizar el proyecto sin entrar en comparativas té
 
 ---
 
-## Sistemas SIEM en entornos empresariales
+## 2. Sistemas SIEM en entornos empresariales
 
 En organizaciones de tamaño medio y grande, los sistemas **SIEM (Security Information and Event Management)** se utilizan como herramientas centrales para la monitorización, correlación y análisis de eventos de seguridad procedentes de múltiples fuentes.
 
@@ -40,7 +40,7 @@ Entre las soluciones SIEM más utilizadas en la industria se encuentran:
 
 ---
 
-## Enfoques formativos y homelabs
+## 3. Enfoques formativos y homelabs
 
 En el ámbito educativo y autodidacta es habitual el uso de **homelabs** para experimentar con tecnologías de seguridad y comprender el funcionamiento de infraestructuras reales a pequeña escala.
 
@@ -53,7 +53,7 @@ Sin embargo, muchos homelabs se centran principalmente en la **instalación y co
 
 ---
 
-## Posicionamiento del proyecto Laboratorio SIEM
+## 4. Posicionamiento del proyecto Laboratorio SIEM
 
 El proyecto **Laboratorio SIEM** se sitúa en un punto intermedio entre las soluciones profesionales y los enfoques puramente formativos basados en herramientas externas.
 
@@ -68,7 +68,7 @@ Este planteamiento permite comprender los principios fundamentales de los sistem
 
 ---
 
-## Relación con entornos reales y evolución futura
+## 5. Relación con entornos reales y evolución futura
 
 El diseño del sistema desarrollado facilita su **evolución futura hacia entornos más realistas**, como la integración con un homelab real orientado a la simulación de incidentes de seguridad.
 

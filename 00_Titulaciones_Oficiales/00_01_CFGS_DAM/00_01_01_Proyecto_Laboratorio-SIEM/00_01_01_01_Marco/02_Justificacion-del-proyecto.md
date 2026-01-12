@@ -8,7 +8,7 @@
 
 ---
 
-## Motivación del proyecto
+## 1. Motivación del proyecto
 
 La creciente digitalización de los sistemas informáticos ha provocado un aumento significativo en la **generación de eventos** derivados del uso de aplicaciones, servicios y redes. En este contexto, la capacidad de **recoger, analizar y transformar dichos eventos en información útil** se ha convertido en un aspecto clave dentro de los entornos tecnológicos actuales.
 
@@ -16,7 +16,7 @@ El proyecto **Laboratorio SIEM** surge como respuesta a esta necesidad, plantean
 
 ---
 
-## Relevancia en el ámbito tecnológico
+## 2. Relevancia en el ámbito tecnológico
 
 Los sistemas SIEM son ampliamente utilizados en entornos profesionales para:
 
@@ -31,7 +31,7 @@ No obstante, estas soluciones suelen presentar una **alta complejidad técnica**
 
 ---
 
-## Pertinencia académica
+## 3. Pertinencia académica
 
 Desde el punto de vista académico, el proyecto resulta pertinente porque:
 
@@ -48,7 +48,7 @@ El proyecto evita centrarse en la mera instalación o configuración de herramie
 
 ---
 
-## Valor formativo
+## 4. Valor formativo
 
 El desarrollo del **Laboratorio SIEM** aporta un alto valor formativo al permitir:
 
@@ -65,7 +65,7 @@ Este enfoque favorece un aprendizaje activo y significativo, alineado con los ob
 
 ---
 
-## Enfoque frente a alternativas existentes
+## 5. Enfoque frente a alternativas existentes
 
 Existen herramientas profesionales que resuelven el problema planteado de forma más completa, sin embargo, su uso directo en un contexto académico **reduce la implicación en el proceso de desarrollo**.
 
@@ -82,7 +82,7 @@ El enfoque adoptado en este proyecto se diferencia al:
 
 ---
 
-## Proyección y continuidad del proyecto
+## 6. Proyección y continuidad del proyecto
 
 El **Laboratorio SIEM** se concibe no solo como un proyecto académico puntual, sino como una **base formativa sobre la que poder evolucionar en el futuro**.
 

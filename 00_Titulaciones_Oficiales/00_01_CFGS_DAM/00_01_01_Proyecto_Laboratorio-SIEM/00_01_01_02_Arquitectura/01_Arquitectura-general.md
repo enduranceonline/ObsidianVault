@@ -113,30 +113,60 @@ La interfaz se mantiene simple y funcional, priorizando la claridad de la inform
 
 ---
 
+Perfecto, aquí tienes una **reescritura completa**, más clara, menos telegráfica y **alineada explícitamente con el diagrama**, sin repetir lo ya evidente y con un tono académico sólido.  
+Puedes **sustituir directamente** el bloque que has pegado por este.
+
+---
+
 ## Flujo general del sistema
 
-El funcionamiento del sistema sigue el siguiente flujo:
+El Laboratorio SIEM se estructura en torno a un **flujo de datos secuencial y modular**, cuyo objetivo es transformar eventos generados en el entorno de laboratorio en información útil para su análisis y visualización. Este flujo se representa de forma esquemática en la **Figura 2**.
 
-1. Generación de eventos en el entorno de laboratorio.
-2. Recepción de eventos por el módulo de ingesta.
-3. Normalización de los eventos.
-4. Almacenamiento en la base de datos.
-5. Análisis mediante reglas.
-6. Generación de alertas.
-7. Visualización a través de la interfaz web.
+### Figura 2. Flujo de datos del Laboratorio SIEM
 
-Este flujo refleja el comportamiento esencial de un sistema SIEM a pequeña escala.
+[[00_Titulaciones_Oficiales/00_01_CFGS_DAM/00_01_01_Proyecto_Laboratorio-SIEM/00_01_01_09_Anexos/Diagramas/02_Flujo_Datos_SIEM.excalidraw.md|02_Flujo_Datos_SIEM.excalidraw]]
+
+El funcionamiento general del sistema es el siguiente:
+
+1. **Generación de eventos**  
+    Los sistemas del entorno de laboratorio (máquinas Linux y Windows) generan eventos relacionados con la actividad del sistema, como autenticaciones o eventos del propio sistema operativo.
+    
+2. **Ingesta de eventos**  
+    Los eventos son recibidos por la **API de ingesta**, que actúa como punto de entrada único al sistema. En esta fase se realiza una validación básica para asegurar que los datos cumplen un formato mínimo esperado.
+    
+3. **Normalización**  
+    Los eventos recibidos se transforman a un formato común mediante el módulo de normalización. Este proceso permite unificar estructuras heterogéneas y asignar niveles de severidad, facilitando su posterior análisis.
+    
+4. **Persistencia de datos**  
+    Los eventos normalizados se almacenan en la **base de datos**, que constituye el núcleo del sistema. En ella se mantienen de forma centralizada los eventos, las reglas definidas y las alertas generadas.
+    
+5. **Análisis mediante reglas**  
+    El **motor de reglas** consulta los eventos almacenados y evalúa si se cumplen las condiciones definidas. Este análisis permite detectar patrones relevantes o comportamientos anómalos dentro del conjunto de eventos.
+    
+6. **Generación y gestión de alertas**  
+    Cuando una regla se activa, se generan alertas que son gestionadas por el módulo correspondiente. Este módulo se encarga de crear las alertas y mantener su estado (por ejemplo, abierta o cerrada), almacenando la información resultante en la base de datos.
+    
+7. **Visualización**  
+    La **interfaz web (dashboard)** accede a la base de datos para mostrar al usuario los eventos y alertas de forma estructurada, permitiendo una visualización clara del estado del sistema y una gestión básica de la información.
+    
+
+Este flujo representa el comportamiento esencial de un sistema SIEM a pequeña escala, manteniendo un equilibrio entre realismo funcional y simplicidad acorde al alcance académico del proyecto.
 
 ---
 
 ## Consideraciones de diseño
 
-El diseño del sistema ha tenido en cuenta los siguientes aspectos:
+El diseño del sistema se ha planteado teniendo en cuenta los siguientes criterios:
 
-- Simplicidad y claridad arquitectónica.
-- Separación de responsabilidades.
-- Facilidad de mantenimiento.
-- Adecuación al contexto académico del ciclo DAM.
+- **Simplicidad y claridad arquitectónica**, priorizando un flujo comprensible y fácil de seguir.
+    
+- **Separación de responsabilidades**, asignando a cada módulo una función concreta dentro del sistema.
+    
+- **Facilidad de mantenimiento y ampliación**, permitiendo introducir mejoras o nuevas funcionalidades sin alterar la estructura base.
+    
+- **Adecuación al contexto académico del ciclo DAM**, evitando una complejidad innecesaria y centrándose en los conceptos fundamentales.
+    
+
+Estas consideraciones garantizan que el sistema sea coherente, didáctico y alineado con los objetivos formativos del proyecto.
 
 ---
-

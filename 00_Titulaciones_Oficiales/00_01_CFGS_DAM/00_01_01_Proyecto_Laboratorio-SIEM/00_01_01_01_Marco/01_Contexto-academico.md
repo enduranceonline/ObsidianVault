@@ -8,7 +8,7 @@
 
 ---
 
-## Marco académico del proyecto
+## 1. Marco académico del proyecto
 
 El proyecto **Laboratorio SIEM** se desarrolla en el contexto del **Trabajo Final del Ciclo Formativo de Grado Superior en Desarrollo de Aplicaciones Multiplataforma (DAM)**, cuyo objetivo es integrar y aplicar de forma práctica los conocimientos adquiridos a lo largo del ciclo formativo.
 
@@ -29,7 +29,7 @@ Este trabajo se concibe como un **proyecto integrador**, en el que convergen dis
 
 ---
 
-## Relación con los módulos del ciclo DAM
+## 2. Relación con los módulos del ciclo DAM
 
 El desarrollo del proyecto permite aplicar competencias relacionadas con varios módulos del ciclo formativo, entre ellos:
 
@@ -48,7 +48,7 @@ El desarrollo del proyecto permite aplicar competencias relacionadas con varios 
 
 ---
 
-## Contexto de aplicación: ciberseguridad
+## 3. Contexto de aplicación: ciberseguridad
 
 El proyecto se enmarca en el ámbito de la **ciberseguridad**, concretamente en la monitorización y análisis de eventos de seguridad, una práctica habitual en entornos profesionales.
 
@@ -65,7 +65,7 @@ Es importante destacar que la ciberseguridad se aborda **desde el punto de vista
 
 ---
 
-## Enfoque formativo
+## 4. Enfoque formativo
 
 El proyecto adopta un enfoque **práctico y aplicado**, permitiendo:
 
@@ -80,7 +80,7 @@ Este enfoque favorece la adquisición de competencias técnicas y metodológicas
 
 ---
 
-## ✔ Alineación con los objetivos del ciclo
+## 5. Alineación con los objetivos del ciclo
 
 El **Laboratorio SIEM** cumple con los requisitos académicos del Trabajo Final de Grado al:
 

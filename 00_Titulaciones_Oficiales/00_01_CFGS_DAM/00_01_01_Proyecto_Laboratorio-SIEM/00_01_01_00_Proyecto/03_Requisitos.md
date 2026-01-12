@@ -8,7 +8,7 @@
 
 ---
 
-## 📌 Introducción
+## 1. Introducción
 
 En este apartado se definen los **requisitos funcionales y no funcionales** del proyecto **Laboratorio SIEM**, con el objetivo de concretar de forma precisa el comportamiento esperado del sistema y los criterios que permitirán validar su correcto funcionamiento.
 
@@ -23,7 +23,7 @@ La definición de estos requisitos facilita:
 
 ---
 
-## ✅ Requisitos funcionales
+## 2. Requisitos funcionales
 
 Los requisitos funcionales describen **qué debe hacer el sistema**.
 
@@ -84,7 +84,7 @@ El sistema deberá operar sobre eventos generados en un **entorno de laboratorio
 
 ---
 
-## ⚙️ Requisitos no funcionales
+## 3. Requisitos no funcionales
 
 Los requisitos no funcionales describen **cómo debe comportarse el sistema**.
 
@@ -135,7 +135,7 @@ El sistema implementará **mecanismos básicos de seguridad**, adecuados al cont
 
 ---
 
-## Requisitos de validación
+## 4. Requisitos de validación
 
 El cumplimiento de los requisitos se verificará mediante:
 
