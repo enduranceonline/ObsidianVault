@@ -11,7 +11,7 @@
 
 ---
 
-## Introducción
+## 1. Introducción
 
 En este apartado se define el **modelo entidad–relación** del sistema Laboratorio SIEM. El objetivo es identificar las entidades principales, sus atributos y las relaciones entre ellas, de forma coherente con la arquitectura y el flujo funcional descritos en los capítulos anteriores.
 
@@ -77,7 +77,7 @@ Rol en el sistema:
 
 ---
 
-## Relación entre entidades
+## 2. Relación entre entidades
 
 ### • Source 1 — N Event
 
@@ -99,7 +99,7 @@ Para resolver esta relación se utiliza una entidad intermedia.
 
 ---
 
-## Entidad intermedia
+## 3. Entidad intermedia
 
 ### • AlertEvent (Relación Alerta–Evento)
 
@@ -112,7 +112,7 @@ Rol en el sistema:
 
 ---
 
-## Diagrama ER (descripción textual y cardinalidades)
+## 4. Diagrama ER (descripción textual y cardinalidades)
 
 En el diagrama entidad–relación del Laboratorio SIEM se utilizan **cardinalidades** para indicar cuántas instancias de una entidad pueden relacionarse con instancias de otra entidad. Estas cardinalidades se expresan mediante los valores **1** (uno) y **N** (muchos).
 
@@ -236,7 +236,7 @@ El modelo se ha diseñado con criterios de:
 
 ---
 
-## Observaciones sobre los tipos de campos
+## 5. Observaciones sobre los tipos de campos
 
 Aunque el modelo entidad–relación no define tipos de datos concretos, es conveniente incluir algunas observaciones generales sobre el significado de los principales campos utilizados en las entidades del sistema, de cara a su correcta interpretación e implementación posterior.
 

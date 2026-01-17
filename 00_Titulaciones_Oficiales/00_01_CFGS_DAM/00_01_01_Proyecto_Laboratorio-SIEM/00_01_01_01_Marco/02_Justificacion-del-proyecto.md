@@ -86,8 +86,10 @@ El enfoque adoptado en este proyecto se diferencia al:
 
 El **Laboratorio SIEM** se concibe no solo como un proyecto académico puntual, sino como una **base formativa sobre la que poder evolucionar en el futuro**.
 
-En este sentido, el desarrollo del sistema permite sentar las bases para la **integración posterior con un homelab real**, orientado a la simulación de incidentes de seguridad en un entorno controlado. Dicho homelab permitiría generar escenarios más complejos y realistas, aportando nuevos eventos al sistema desarrollado y ampliando su valor como herramienta de aprendizaje.
+En este sentido, el desarrollo del sistema permite sentar las bases para la **integración posterior con un homelab real o la ampliación del laboratorio actual**, orientado a la simulación de incidentes de seguridad en un entorno controlado.
 
-Es importante destacar que esta posible evolución **no forma parte del alcance del presente proyecto**, sino que se plantea como una **línea de trabajo futura**, derivada del interés formativo del alumno y de la naturaleza extensible del sistema desarrollado.
+Es importante destacar que esta posible evolución **no forma parte del alcance del presente proyecto**, sino que se plantea como una **línea de trabajo futura**, derivada del interés formativo del alumno y de la naturaleza extensible del sistema desarrollado.  
+
+Esta proyección refuerza el carácter formativo del proyecto, sin condicionar la evaluación del mismo a desarrollos futuros no implementados.
 
 ---
