@@ -7,7 +7,7 @@ El proyecto **SIEM-HomeLab** es una infraestructura real y documentada diseñada
 
 El objetivo principal es construir un entorno que permita:
 
-- monitorizar una red doméstica compleja
+- monitorizar una red doméstica
     
 - detectar ataques reales y simulados
     

@@ -59,7 +59,7 @@ mkdir -p ~/.config/git
 echo "$(git config user.email) $(cat ~/.ssh/id_ed25519.pub)" > ~/.config/git/allowed_signers
 git config --global gpg.ssh.allowedSignersFile ~/.config/git/allowed_signers
 ```
-
+quiero hacer el máximo de cambios que mejoren y pulan el trabajo sin importar el tiempo que me lleve.
 # Flujo de trabajo desde ahora
 
 ```bash
