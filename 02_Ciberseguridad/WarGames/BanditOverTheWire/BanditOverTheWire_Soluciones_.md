@@ -463,8 +463,8 @@ sort -u archivo.txt     # ordenar y eliminar duplicados
 
   ```bash
   sort archivo.txt | uniq
-   ```
-
+  ```
+   
 1. **Contar cuántas veces aparece cada línea**:
 
 ```bash
@@ -481,7 +481,7 @@ sort -u archivo.txt     # ordenar y eliminar duplicados
 
  ```bash
   sort archivo.txt | uniq -d
-   ```
+ ```
 
 ##### 🔹 `grep` (filtrado rápido)
 
@@ -532,19 +532,19 @@ grep -w "palabra" archivo.txt    # palabra exacta
 | 🔍                              | `file -b` devuelve solo el dictamen. Cada bloque mueve/extrae y actualiza la variable `f`.                                                                                                                                                                              |                                                                                                                  |                                                                       |
 | 🗃️ Salida final                | `The password is <pass13>`                                                                                                                                                                                                                                              |                                                                                                                  |                                                                       |
 
-## Apuntes sobre el script **Bandit12**
+#### Apuntes sobre el script **Bandit12**
 
 > Script Bash que extrae recursivamente un fichero comprimido en formato **7‑Zip** hasta encontrar un archivo de texto legible, registrando todos los niveles de compresión por los que pasa.
 
 ---
 
-### 1. Objetivo
+##### 1. Objetivo
 
 Descomprimir **Bandit12** (fichero 7‑Zip) capa a capa, añadiendo cada nombre de archivo a un array y deteniendo el proceso cuando el fichero que toca extraer ya no sea otro contenedor sino un _texto plano_. Finalmente se muestra por pantalla el contenido del archivo de texto hallado.
 
 ---
 
-### 2. Dependencias
+##### 2. Dependencias
 
 - **bash** (≥4: usa arrays y `[[ … ]]`)
     
@@ -555,7 +555,7 @@ Descomprimir **Bandit12** (fichero 7‑Zip) capa a capa, añadiendo cada nombr
 
 ---
 
-### 3. Código fuente original
+##### 3. Código fuente original
 
 ```bash
 #!/usr/bin/bash
@@ -582,7 +582,7 @@ cat $File
 
 ---
 
-### 4. Explicación paso a paso
+##### 4. Explicación paso a paso
 
 |Línea|Descripción|
 |---|---|
@@ -594,7 +594,7 @@ cat $File
 
 ---
 
-### 5. Aspectos a tener en cuenta
+##### 5. Aspectos a tener en cuenta
 
 1. **Comillas y espacios**: Si un nombre de archivo contiene espacios, convendría entrecomillar las expansiones (`"$File"`).
     
@@ -611,7 +611,7 @@ cat $File
 
 ---
 
-### 6. Posibles mejoras / refactorización
+##### 6. Posibles mejoras / refactorización
 
 ```bash
 #!/usr/bin/env bash
@@ -644,7 +644,7 @@ cat "$current_file"
 
 ---
 
-### 7. Ejecución
+##### 7. Ejecución
 
 ```bash
 chmod +x Bandit12_extractor.sh
@@ -653,7 +653,7 @@ chmod +x Bandit12_extractor.sh
 
 ---
 
-### 8. Referencias
+##### 8. Referencias
 
 - [Página de manual de 7‑Zip](https://man7.org/linux/man-pages/man1/7z.1.html)
     
