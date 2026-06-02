@@ -8,5 +8,11 @@
     "margin": "0",
     "downscalePercent": 49
   },
-  "alwaysUpdateLinks": true
+  "alwaysUpdateLinks": true,
+  "readableLineLength": false,
+  "foldHeading": true,
+  "foldIndent": true,
+  "showLineNumber": true,
+  "rightToLeft": false,
+  "strictLineBreaks": false
 }
