@@ -7,21 +7,22 @@ tema: Sistemas Operativos
 
 Nota índice — no contiene apuntes propios, solo enlaces a todo lo relacionado con Sistemas Operativos repartido por el vault.
 
-## Práctica
-- [[Linux - Command Line Reference]]
-- [[Linux - Permissions & Process Management]]
-
-## Teoría / Fundamentos
+## Fundamentos
 - [[Linux - Architecture]]
 - [[Linux - Filesystem Hierarchy]]
 - [[Linux - Distributions]]
+
+## Práctica
+- [[Linux - Command Line Reference]]
 - [[Linux - Logical Operators and Test Conditions]]
-*(pendiente — se rellena cuando se escriba el Dominio 3 - Seguridad de Endpoints de Kasiu, módulo de hardening Windows/Linux)*
+- [[Linux - Permissions & Process Management]]
+- [[Linux - Mini-reto Practica Basica]]
+
+## Teoría / Dominios Kasiu
+*(pendiente — Dominio 3 - Seguridad de Endpoints, módulo de hardening Windows/Linux)*
 
 ## Certificaciones
 *(pendiente)*
-- 
 
 ## Proyectos relacionados
 *(homelab — cuando esté funcionando con las VMs Ubuntu y Windows)*
-- 
