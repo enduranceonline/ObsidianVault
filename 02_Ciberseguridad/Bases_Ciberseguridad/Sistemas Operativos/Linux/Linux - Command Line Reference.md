@@ -132,14 +132,38 @@ source ~/.bashrc    # reload shell config — changes apply to this session
 **The critical difference**: `./script.sh` spawns a new process (isolated); `. script.sh` runs inline (affects your session). For anything you want to "run", use `./`. For config you want to "apply", use `source`/`.`.
 
 
-**`>` `>>` `<`** — redirect input/output.
+
+## 🔧 Streams & Redirection
+
+Every command has three I/O **streams**, each with a numeric file descriptor:
+
+| Stream | Descriptor | What it carries |
+|---|---|---|
+| stdin | `0` | input the command reads |
+| stdout | `1` | normal output |
+| stderr | `2` | error messages |
+
+`>` redirects stdout by default — that's why `command > file.txt` writes only the normal output. Errors still print to the screen, because they travel through a *separate* stream that `>` alone doesn't touch.
+
 ```bash
-echo "Hello" > greeting.txt          # create or overwrite
+echo "Hello" > greeting.txt          # create or overwrite (stdout)
 echo "Another line" >> greeting.txt  # append to the end
-cat < greeting.txt                   # input from a file
+cat < greeting.txt                   # input from a file (stdin)
+
+command 2> errors.log     # send only stderr to a file
+command 2>/dev/null       # discard stderr entirely
+command > out.log 2>&1    # send both stdout and stderr to the same file
+command &> all.log        # shorthand for the line above (bash-specific)
 ```
 
-For the full breakdown of `chmod`, `chown`, octal notation, and special bits (SUID/SGID/sticky), see [[Linux - Permissions & Process Management]] — kept there instead of duplicated here.
+**`/dev/null`** is a special file that discards anything written to it — a black hole, no disk space used, nothing retained. The standard way to silence noise you already expect and don't need, instead of letting it clutter the screen:
+```bash
+find /home -type f -name "readme" 2>/dev/null   # only real matches, no "Permission denied" spam
+```
+
+**Why this matters beyond convenience**: separating stdout from stderr means a script or pipeline can react to *only* the actual data, ignoring error chatter — critical once you start scripting or piping command output into something else that expects clean input.
+
+For the full breakdown of `chmod`, `chown`, octal notation, and special bits (SUID/SGID/sticky), see [[Permisos y gestión de procesos]] — kept there instead of duplicated here.
 
 ## 🛠️ Administrative Commands
 
