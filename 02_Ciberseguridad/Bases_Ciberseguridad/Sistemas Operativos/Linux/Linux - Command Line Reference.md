@@ -95,6 +95,7 @@ rm -r folder/    # recursive, deletes directory + contents
 rm -f file       # force, no prompts at all — use carefully
 rmdir folder/    # safer alternative: only deletes if the folder is empty
 ```
+> ⚠️ A filename starting with `-` (e.g. `-file.txt`) gets parsed as an option, not a target — same goes for `cat`, `cp`, `mv`, anything. Fix with `rm -- -file.txt` or `rm ./-file.txt`. Full breakdown: [[Linux - Argument Parsing and Special Filenames]].
 
 **`find`** — search recursively for files/directories from a starting path.
 ```bash
