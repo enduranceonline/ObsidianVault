@@ -17,11 +17,11 @@ Esta regla se respeta semana a semana — el check correspondiente vive en cada 
 ## Progreso por mes
 
 ### Mes 1 — Tronco de base + arranque del libro
-- [ ] Networking Basics (NetAcad, 22h) completado
+- [ ] Networking Basics (NetAcad, 22h) completado — Knowledge Check + Módulo 1 hechos
 - [ ] Subnetting Mastery (NetAcad, beta, 4h) completado
-- [ ] Linux Journey completado
-- [ ] OverTheWire Bandit hasta nivel 15
-- [ ] Libro de Kasiu — lectura panorámica completa (ver sección abajo)
+- [x] Linux Journey completado
+- [ ] OverTheWire Bandit hasta nivel 15 — niveles 0 a 5 cerrados
+- [ ] Libro de Kasiu — lectura panorámica completa (ver sección abajo) — sin empezar todavía
 
 ### Mes 2 — Profundización dominios Cloud-relevantes + práctica
 - [ ] Endpoint Security (NetAcad, 27h, 31 labs) completado — vehículo principal de profundización (cubre Dominio 2 y 3 con práctica real, no solo relectura de Kasiu)
@@ -75,7 +75,8 @@ Esta regla se respeta semana a semana — el check correspondiente vive en cada 
 
 | Semana | Mes | Estado | Hito práctico cerrado |
 |---|---|---|---|
-| [[Semana_01]] | 1 | 🟡 En curso | |
+| [[Semana_01]] | 1 | 🟢 Cerrada (parcial — Kasiu/Subnetting pendientes) | Sí |
+| [[Semana_02]] | 1 | 🟡 En curso | |
 
 *(Duplica la fila al crear cada nueva semana desde `_Plantilla_Semana.md`)*
 

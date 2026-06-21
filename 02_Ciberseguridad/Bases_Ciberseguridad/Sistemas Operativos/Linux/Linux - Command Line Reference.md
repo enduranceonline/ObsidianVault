@@ -97,11 +97,12 @@ rmdir folder/    # safer alternative: only deletes if the folder is empty
 ```
 > ⚠️ A filename starting with `-` (e.g. `-file.txt`) gets parsed as an option, not a target — same goes for `cat`, `cp`, `mv`, anything. Fix with `rm -- -file.txt` or `rm ./-file.txt`. Full breakdown: [[Linux - Argument Parsing and Special Filenames]].
 
-**`find`** — search recursively for files/directories from a starting path.
+**`find`** — search recursively for files/directories from a starting path. Unlike `file` or `ls`, `find` descends into every subdirectory automatically — no need to loop into each one by hand.
 ```bash
 find /home -name puppies.jpg
 find /home -type d -name MyFolder   # -type d = directory, -type f = regular file
 ```
+Full reference — combining `-type`/`-size`/`-perm`/`-mtime`, logical operators, `-exec` actions, privesc-recon patterns: [[Linux - find Command]].
 
 ## 🔀 Pipes and Chaining
 

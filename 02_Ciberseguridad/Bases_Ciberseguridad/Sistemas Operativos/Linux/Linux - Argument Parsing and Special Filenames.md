@@ -57,5 +57,27 @@ If an attacker can drop a file with a crafted name into that directory before th
 
 This is exactly why the disambiguation habit matters beyond Bandit: any script that loops over user-writable filenames without `--` or explicit paths is a potential privilege-escalation vector — relevant later for [[Permissions & Process Management]] and for pentesting/privesc work (HTB, eJPT).
 
-## Key Takeaway
+## Filenames Containing Spaces (Word Splitting)
+
+A different root cause, same family of problem. By default, bash splits the command line into separate arguments wherever it finds whitespace — controlled by the `$IFS` (Internal Field Separator) variable. A filename with a space inside it, if not escaped or quoted, gets torn into multiple arguments that don't match anything real:
+
+```bash
+cat my file.txt    # bash sees TWO arguments: "my" and "file.txt" — neither exists
+```
+
+**Fixes — pick one:**
+```bash
+cat my\ file.txt        # backslash-escape each space individually
+cat "my file.txt"       # wrap the whole name in double quotes
+cat 'my file.txt'       # single quotes work too (and are more "literal" — no $ expansion inside)
+```
+
+**The practical habit**: type the first few characters of the filename and press **Tab**. Bash's auto-completion fills in the rest *with the escaping already done correctly* — far more reliable than typing backslashes by hand, especially once a name combines spaces with other special characters.
+
+**Combining both problems at once**: a filename can have a leading dash *and* embedded spaces simultaneously — exactly the shape of Bandit Level 2 (`--spaces in this filename--`). That needs both fixes applied together: the `./` (or `--`/absolute path) to defuse the leading-dash-as-option problem, *and* backslash-escaping or quoting to keep the spaces from being split into separate arguments:
+```bash
+cat ./--spaces\ in\ this\ filename--
+```
+
+
 "It's just syntax I don't know yet" is the right read on this — it's a documented, learnable convention, not an arbitrary trick. Once internalized, `--` and explicit paths become reflexive, the same way `pwd`-before-any-relative-path already has.
