@@ -14,7 +14,11 @@ Nota índice — no contiene apuntes propios, solo enlaces a todo lo relacionado
 
 ## Práctica
 - [[Linux - Command Line Reference]]
+- [[Linux - Piping and Redirection]]
 - [[Linux - Logical Operators and Test Conditions]]
+- [[Linux - Argument Parsing and Special Filenames]]
+- [[Linux - File Type Detection]]
+- [[Linux - find Command]]
 - [[Linux - Permissions & Process Management]]
 - [[Linux - Mini-reto Practica Basica]]
 

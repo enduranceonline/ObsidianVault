@@ -25,6 +25,7 @@
     "TQ_show_tree": "checkbox",
     "TQ_show_urgency": "checkbox",
     "Creado": "date",
-    "Relacionado": "text"
+    "Relacionado": "text",
+    "read_date": "date"
   }
 }

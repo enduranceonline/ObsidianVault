@@ -13,8 +13,8 @@ mes: 1
 ## 🎯 Objetivos de la semana
 Solo 2 mañanas de estudio disponibles esta semana — alcance reducido a propósito, sin arrastrar los cuatro frentes pendientes a la vez.
 
-- [ ] Mañana 1 — Kasiu: índice completo + Dominio 1 en modo panorámico
-- [ ] Mañana 2 — Networking Basics: Módulo 2
+- [x] Mañana 1 — Kasiu: índice completo + Dominio 1 en modo panorámico ✅ 2026-06-22
+- [x] Mañana 2 — Networking Basics: Módulo 2 ✅ 2026-06-23
 - [ ] Mantener hábitos base
 
 **Aplazado a Semana 3** (no por falta de valor, por falta de horas):
@@ -28,7 +28,7 @@ Solo 2 mañanas de estudio disponibles esta semana — alcance reducido a propó
 ## ✅ Tareas (TickTick — sistema simplificado)
 > Una tarea = un bloque de trabajo con tiempo/contexto. El detalle de cada bloque vive aquí, no en TickTick.
 
-- [ ] Kasiu — Índice + Dominio 1 panorámico `[50min] [teoria] [diaLibre]`
+- [x] Kasiu — Índice + Dominio 1 panorámico `[50min] [teoria] [diaLibre]` ✅ 2026-06-22
 - [ ] Networking Basics — Módulo 2 `[50min] [teoria] [diaLibre]`
 - [ ] Retro Fase 0 (domingo) `[microtarea]` — recordatorio, el checklist vive en esta nota
 
