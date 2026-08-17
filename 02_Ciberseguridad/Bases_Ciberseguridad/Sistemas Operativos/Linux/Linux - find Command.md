@@ -17,6 +17,23 @@ find [starting-path] [tests] [actions]
 - **Tests** — conditions a file must match (name, type, size, time, permissions...).
 - **Actions** — what to do with matches. Defaults to `-print` (just list them) if no action is given.
 
+### ⚠️ A bare word is a PATH, not a search term
+
+The most common beginner mistake with `find`, and the one that produces the most confusing output:
+
+```bash
+find / data.txt        # WRONG
+find / -name data.txt  # RIGHT
+```
+
+`find` parses its arguments positionally: **every argument before the first one starting with `-` is treated as a starting path.** So `find / data.txt` means *"recurse through `/`, and also recurse through a directory called `data.txt`"*. The result is the entire filesystem dumped to the terminal, plus an error about the second path not existing.
+
+Nothing becomes a search criterion until a test flag introduces it. `-name` is what converts `data.txt` from a place-to-look-in into a thing-to-look-for. Same logic applies to `-type`, `-size`, `-user` and every other test.
+
+> The underlying cause is the same convention documented in [[Linux - Argument Parsing and Special Filenames]]: the leading `-` is what separates options from operands, and each program's own parser decides the rest. Encountered firsthand in [[Bandit - Level 08]].
+
+**Before reaching for `find` at all:** run `pwd` and `ls -la` first. Across [[Bandit - Level 07]] and [[Bandit - Level 08]], `find` was used twice to locate a file that was already in the current directory. `find` is for when you genuinely don't know where something is — not a reflex to open with.
+
 ## Tests by Category
 
 **Name & path**

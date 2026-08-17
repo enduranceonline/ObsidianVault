@@ -36,7 +36,7 @@ find / -name data.txt 2>/dev/null | grep 'millionth'   # returned nothing
 ```bash
 ls               # data.txt is right here in the home directory
 cat data.txt | grep 'millionth'
-# → millionth    dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc
+# → millionth    VR1ljMayciFxbnUokuQmJFw6QC9VKtub
 ```
 
 Or equivalently, passing the file directly to grep:
