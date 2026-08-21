@@ -2,11 +2,11 @@
   "attachmentFolderPath": "./Anexos",
   "promptDelete": false,
   "pdfExportSettings": {
-    "includeName": true,
+    "includeName": false,
     "pageSize": "A4",
     "landscape": false,
     "margin": "0",
-    "downscalePercent": 49
+    "downscalePercent": 75
   },
   "alwaysUpdateLinks": true,
   "readableLineLength": false,
@@ -14,5 +14,8 @@
   "foldIndent": true,
   "showLineNumber": true,
   "rightToLeft": false,
-  "strictLineBreaks": false
+  "strictLineBreaks": false,
+  "livePreview": true,
+  "tabSize": 4,
+  "vimMode": false
 }

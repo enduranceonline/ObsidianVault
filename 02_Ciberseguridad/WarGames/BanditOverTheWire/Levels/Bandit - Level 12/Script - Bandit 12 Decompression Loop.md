@@ -8,6 +8,7 @@ source: Bandit Level 12 — automation exercise
 Two implementations of the same task: unwrap a repeatedly compressed file until plain text is reached. Written **after** solving [[Bandit - Level 12]] by hand — automating a process not yet understood produces a script that can't be debugged.
 
 Concepts: [[Linux - Nested Archives and Compression Layers]]
+Line-by-line syntax explanation: [[Script - Code Walkthrough (Bash & Python)]]
 
 ---
 
@@ -28,6 +29,8 @@ Three properties drove every design decision:
 ---
 
 ## Bash version — `unwrap.sh`
+
+### Full source
 
 ```bash
 #!/usr/bin/env bash
@@ -131,6 +134,8 @@ echo "[!] Either the file is deeper than expected, or the loop is stuck." >&2
 exit 1
 ```
 
+### Usage
+
 ```bash
 ./unwrap.sh data.txt          # after xxd -r, on the binary
 ./unwrap.sh <file> 50         # raise the layer limit
@@ -179,6 +184,8 @@ set -uo pipefail
 ---
 
 ## Python version — `unwrap.py`
+
+### Full source
 
 ```python
 #!/usr/bin/env python3
@@ -358,6 +365,8 @@ if __name__ == "__main__":
     sys.exit(main())
 ```
 
+### Usage
+
 ```bash
 ./unwrap.py data.txt          # hex dump auto-detected, no xxd needed
 ./unwrap.py file -q           # password only, no trace
@@ -390,6 +399,148 @@ Decompression-bomb guard. `42.zip` is 42 KB and expands to 4.5 PB, nested exactl
 hex_part = re.split(r"\s{2,}", body.strip())[0]
 ```
 Reverting the hex dump can't slice by fixed column, because the ASCII column may itself contain hex-looking characters. Splitting on 2+ spaces separates the hex from the ASCII reliably.
+
+---
+
+## Running Them on the Bandit Server
+
+Writing the script locally is the easy half. Getting it onto a box where the home directory is read-only, and running it correctly, is where the practical friction lives.
+
+### Step 0 — Check what's available
+
+```bash
+which xxd file gunzip bunzip2 tar    # Bash version's dependencies
+which python3                         # Python version
+python3 --version
+```
+
+Never assume an interpreter is installed on a machine you don't administer. On a locked-down host, the Bash version may be the only option.
+
+### Step 1 — A writable working directory
+
+The Bandit home is read-only, so everything happens in `/tmp` under a hard-to-guess name (the directory is shared with every other player):
+
+```bash
+mkdir -p /tmp/dk9x2mqf7t && cd /tmp/dk9x2mqf7t
+cp ~/data.txt .
+```
+
+### Step 2 — Get the script onto the box
+
+**Option A — paste with a heredoc.** Works over any SSH session, needs nothing installed:
+
+```bash
+cat > unwrap.sh << 'ENDOFSCRIPT'
+#!/usr/bin/env bash
+... paste the whole script here ...
+ENDOFSCRIPT
+```
+
+> ⚠️ **The quotes around `'ENDOFSCRIPT'` are mandatory.** Unquoted, bash performs variable expansion *while reading the heredoc* — every `$1`, `$WORKDIR` and `${#members[@]}` in the script would be replaced by its (empty) value as it's being written, silently producing a broken file. Quoting the delimiter makes the block literal. This is the single most common way a pasted script arrives corrupted.
+
+**Option B — `scp` from the local machine:**
+
+```bash
+scp -P 2220 unwrap.sh bandit12@bandit.labs.overthewire.org:/tmp/dk9x2mqf7t/
+```
+
+Note the **capital `-P`**: `scp` uses `-P` for the port while `ssh` uses lowercase `-p`. In `scp`, lowercase `-p` means "preserve timestamps" — a mismatch that has confused people for thirty years.
+
+### Step 3 — Fix line endings if the file came from Windows
+
+```bash
+head -1 unwrap.sh | cat -A | tail -c 20
+```
+
+If the line ends in `^M$`, the file has Windows CRLF endings and the shebang will fail with the notoriously unhelpful `bad interpreter: /usr/bin/env bash^M: No such file or directory` — the `^M` is part of the path bash is trying to find.
+
+```bash
+tr -d '\r' < unwrap.sh > unwrap_fixed.sh && mv unwrap_fixed.sh unwrap.sh
+```
+
+The `tr -d '\r'` from [[Linux - Encoding vs Encryption]], solving a real problem. Note the redirect goes to a **different filename** — `tr -d '\r' < unwrap.sh > unwrap.sh` would truncate the file before reading it, the exact mistake from [[Bandit - Level 12]].
+
+### Step 4 — Make it executable
+
+```bash
+chmod +x unwrap.sh
+```
+
+Without the execute bit, `./unwrap.sh` returns `Permission denied` — see [[Linux - Permissions & Process Management]]. Alternatively `bash unwrap.sh` runs it without the bit, since the interpreter is invoked explicitly.
+
+### Step 5 — Run it
+
+**Bash version — revert the hex dump first:**
+
+```bash
+xxd -r data.txt > start.bin
+./unwrap.sh start.bin
+```
+
+> ⚠️ **Do not pass `data.txt` directly to the Bash version.** `file` reports the hex dump as `ASCII text`, so the script's terminal condition matches on layer 0 and it triumphantly prints the hex dump as though it were the answer. Not a crash — a **wrong answer delivered confidently**, the most dangerous kind of bug and the same failure shape as `base64` without `-d` in [[Bandit - Level 10]].
+
+**Python version — no pre-step needed:**
+
+```bash
+python3 unwrap.py data.txt
+```
+
+It detects the `OFFSET: HH HH` pattern and reverts the dump itself.
+
+### Step 6 — Expected output
+
+```
+[*] Working directory: /tmp/unwrap.63aRvzbb
+[00] layer_00   gzip compressed data, was "data2.bin"
+[01] layer_01   bzip2 compressed data, block size = 900k
+[02] layer_02   gzip compressed data, was "data4.bin"
+[03] layer_03   POSIX tar archive (GNU)
+[04] layer_04   POSIX tar archive (GNU)
+[05] layer_05   bzip2 compressed data, block size = 900k
+[06] layer_06   POSIX tar archive (GNU)
+[07] layer_07   gzip compressed data, was "data9.bin"
+[08] layer_08   ASCII text
+
+[+] Plain text reached after 8 layers.
+----------------------------------------
+The password is qQYQiHOBPR8zR61qxYqX45quvihF2uzk
+----------------------------------------
+```
+
+The trace should match the manual solve layer for layer. If it doesn't, the script is wrong — **the manual result is the reference**, not the other way round.
+
+###  Result
+
+---
+
+![[Pasted image 20260819163104.png]]
+
+-----
+
+![[Pasted image 20260819163835.png]]
+
+---
+### Troubleshooting
+
+| Symptom | Cause | Fix |
+|---|---|---|
+| `bad interpreter: ...^M` | Windows CRLF endings | `tr -d '\r'` (Step 3) |
+| `Permission denied` running `./unwrap.sh` | No execute bit | `chmod +x`, or run `bash unwrap.sh` |
+| Prints the hex dump as "plain text" | Passed `data.txt` to the Bash version | `xxd -r` first |
+| `Unhandled type: ...` | Format outside the four supported | Add a `case` branch / dict entry |
+| Empty or garbled script after pasting | Unquoted heredoc delimiter | Re-paste with `<< 'EOF'` |
+| `command not found: python3` | No interpreter on the host | Use the Bash version |
+| `mkdir: cannot create directory` | Wrong path, or read-only location | Work under `/tmp` |
+
+### Cleaning up
+
+The level banner asks players not to leave files lying around:
+
+```bash
+cd ~ && rm -rf /tmp/dk9x2mqf7t /tmp/unwrap.*
+```
+
+Good habit beyond etiquette: scratch directories holding decompressed unknown content shouldn't outlive the task that created them.
 
 ---
 
