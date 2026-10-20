@@ -29,9 +29,9 @@ La hoja UC1 abarca más que la Sesión 1: conjuntos (1.1), relaciones (1.2), apl
 
 ## Ejercicios recomendados
 
-- [ ] **1.** $A \cap B$, $A \cup B$, $A \setminus B$, $B \setminus A$ en cinco casos (conjuntos finitos e intervalos) — ✅ [[Algebra-Tema-1.1-Conjuntos]] (secciones 1.1.2 y "Notación de intervalos")
+- [x] **1.** $A \cap B$, $A \cup B$, $A \setminus B$, $B \setminus A$ en cinco casos (conjuntos finitos e intervalos) — ✅ [[Algebra-Tema-1.1-Conjuntos]] (secciones 1.1.2 y "Notación de intervalos") ✅ 2026-10-18
 - [ ] **2.** Producto cartesiano $A \times B$ — 🟡 [[Algebra-Tema-1.2-Relaciones]] (producto cartesiano). Es inmediato con la definición.
-- [ ] **3.** $\mathcal{P}(A)$ de un conjunto de 4 elementos — ✅ [[Algebra-Tema-1.1-Conjuntos]] (1.1.3) y [[Algebra-Ejercicios-Conjuntos]] (Partes 1)
+- [x] **3.** $\mathcal{P}(A)$ de un conjunto de 4 elementos — ✅ [[Algebra-Tema-1.1-Conjuntos]] (1.1.3) y [[Algebra-Ejercicios-Conjuntos]] (Partes 1) ✅ 2026-10-18
 - [ ] **4.** ¿Es aplicación? ¿Inyectiva, sobreyectiva, biyectiva? ¿Inversa? (cuatro apartados) — 🟡 [[Algebra-Tema-1.3-Aplicaciones]] (1.3.1 y 1.3.3)
 - [ ] **5.** Composición $g \circ f$ con conjuntos finitos — 🟡 [[Algebra-Tema-1.3-Aplicaciones]] (1.3.2)
 - [ ] **6–11.** Problemas de conteo — 🟡 [[Algebra-Tema-2-Combinatoria]] (2.2, usa la guía de "¿orden? ¿repetición? ¿todos?")

@@ -3,23 +3,24 @@ asignatura: Álgebra
 tipo: clase
 sesion: 1
 fecha: 2026-10-15
-profesor: David Zorío Ventura
+profesor: Dr. Guillem Cobos
 material: "[[04GCIB - Sesión 1 - Conjuntos.pdf]]"
+email: gcobos@professor.universidadviu.com
 ---
 
 # Clase 01 — Teoría de conjuntos
 
 ## Qué se vio
 - Presentación de la asignatura: 4 temas.
-  - T1 (S1-S4): marco matemático (conjuntos, relaciones y aplicaciones).
-  - T2 (S5-S6): matemática discreta, con el objetivo de poder explicar el sistema criptográfico RSA.
-  - T3 (S7-S9): sistemas de ecuaciones lineales (álgebra lineal, explicada de la forma más general posible).
-  - T4 (S10-S12): espacios vectoriales, aplicaciones lineales y diagonalización de matrices.
+	  - T1 (S1-S4): marco matemático (conjuntos, relaciones y aplicaciones).
+	  - T2 (S5-S6): matemática discreta, con el objetivo de poder explicar el sistema criptográfico RSA.
+	  - T3 (S7-S9): sistemas de ecuaciones lineales (álgebra lineal, explicada de la forma más general posible).
+	  - T4 (S10-S12): espacios vectoriales, aplicaciones lineales y diagonalización de matrices.
 - Teoría de conjuntos: mismas definiciones que en EIO → [[Algebra-Tema-1.1-Conjuntos]]
-  - **Inclusión** $A \subseteq B$: todo elemento $x$ de $A$ es también elemento de $B$. El conjunto vacío está incluido en cualquier conjunto. Ejemplos 1 y 2 representados en diagramas de Venn.
-  - Pregunta al profesor: la **inclusión propia** ($A \subseteq B$ y $A \neq B$) existe, pero no se usará en la asignatura.
-  - **Igualdad**: $A = B$ si $A \subseteq B$ y $B \subseteq A$.
-  - Ejemplo de igualdad: $\mathbb{Q} = D$ (racionales = decimales periódicos). Hay que probar las dos inclusiones.
+	  - **Inclusión** $A \subseteq B$: todo elemento $x$ de $A$ es también elemento de $B$. El conjunto vacío está incluido en cualquier conjunto. Ejemplos 1 y 2 representados en diagramas de Venn.
+	  - Pregunta al profesor: la **inclusión propia** ($A \subseteq B$ y $A \neq B$) existe, pero no se usará en la asignatura.
+	  - **Igualdad**: $A = B$ si $A \subseteq B$ y $B \subseteq A$.
+		  - Ejemplo de igualdad: $\mathbb{Q} = D$ (racionales = decimales periódicos). Hay que probar las dos inclusiones.
     - $D \subseteq \mathbb{Q}$: se corre la coma hasta después del primer periodo y hasta justo antes de él, y se restan. Con $x = 0{,}7537\ldots$ sale $(10^4 - 10^2)\,x = 7462$, luego $x = \frac{7462}{9900}$.
     - $\mathbb{Q} \subseteq D$: al dividir $a/b$ los restos $r_i$ están entre $0$ y $b-1$, así que alguno se repite y las cifras se repiten. Ejemplo: $3/7$, con restos entre $0$ y $6$.
   - **Operaciones**: intersección, unión y complementario o diferencia, cada una con su fórmula y su diagrama de Venn.

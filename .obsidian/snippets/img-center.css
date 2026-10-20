@@ -1,0 +1,5 @@
+img[alt*="center"],
+.markdown-source-view .cm-content .image-embed[alt*="center"] {
+  display: block;
+  margin-inline: auto !important;
+}   
